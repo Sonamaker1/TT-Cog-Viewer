@@ -10,7 +10,14 @@ Hi! This tool is mainly used for viewing Corporate Clash Cogs as well as making 
 * [ImageMagick](https://imagemagick.org/script/download.php#windows) _Note: This one's optional, its only purpose is for cropping images._
 
 ## How to use 
-Paste all of your Corporate Clash .mf files in the resources folder. Once extracted, go to the scripts folder and double click on start.bat
+<b>FIRST ADD CORPORATE CLASH'S FILES:</b>
+* Paste all of your Corporate Clash .mf files in the resources folder.
+* Run extract.bat in the resources folder. This will unpack all your multifiles into phase folders. You can remove the .mf files afterwards
+* Do not delete the ICONS folder, ever.
+
+<b>STARTING THE COG VIEWER:</b>
+* Go to the scripts folder and double click on start.bat
+* Alternatively, you can open main.py in the src folder and run it through a Python IDE.
 ## What dat button do
 ### Cog List
 Tab             | Action
