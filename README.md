@@ -4,10 +4,22 @@ Corporate Clash Cog Viewer / Cog Render Maker
 # Info
 Hi! This tool is mainly used for viewing Corporate Clash Cogs as well as making renders for them.
 
-# Prequisites
+# Pre-requisites
 * [Panda3D](https://www.panda3d.org/download/)
 * [Python](https://www.python.org/downloads/)
 * [ImageMagick](https://imagemagick.org/script/download.php#windows) _Note: This one's optional, its only purpose is for cropping images._
+
+# Changelogs (Last Updated: December 17, 2025)
+* Added Department Heads (VP, CFO, CLO, CEO)
+* Added Suit Library
+* Added Upload Head Texture
+* Added Missing Props ( pls tell me if there are still missing ones because there are)
+* Added Colors Tabber
+* Added Pie Splat functionality
+* Take Screenshot now darkens the background for the screenshot frame, removing artifacting
+* Removed Herobrine
+  
+
 
 ## How to use 
 <b>FIRST ADD CORPORATE CLASH'S FILES:</b>
@@ -18,7 +30,20 @@ Hi! This tool is mainly used for viewing Corporate Clash Cogs as well as making 
 <b>STARTING THE COG VIEWER:</b>
 * Go to the scripts folder and double click on start.bat
 * Alternatively, you can open main.py in the src folder and run it through a Python IDE.
-## What dat button do
+
+## Sections:
+Section             | Location | Definition
+-------------   | ------------- | -------------
+Cog | Top Left (First Tab) | Allows you to select a Cog actor, organized by Department.
+Props | Top Left (Second Tab) | Allows you to apply props to the Cog actor.
+Main | Bottom Left (First Tab) | Allows you to toggle miscellaneous attributes of the Cog Actor and camera.
+Animation | Bottom Left (Second Tab) | Allows you to adjust the animation frames and playback.
+Suit Library | Bottom Left (Third Tab) | Allows you to apply and adjust different suit textures/models/model parts.
+Head HPR | Bottom Left (Fourth Tab) | Allows you to set the position and size of the Cog's head.
+Set Scale | Bottom Left (Fifth Tab) | Allows you to set the scale and dimensions of the Cog actor/head.
+Set Color | Bottom Left (Sixth Tab) | Allows you to apply colors to the Cog actor/background.
+
+## Button Definitions:
 ### Cog List
 Tab             | Action
 -------------   | -------------
@@ -32,27 +57,29 @@ Tab             | Action
 Prop 1 | Props for the Cog's right hand. Double click a prop to load it in, double click to remove it. Use the search bar if you're looking for a specific prop.
 Prop 2 | Props for the Cog's left hand. Double click a prop to load it in, double click to remove it. Use the search bar if you're looking for a specific prop.
 
-### Toggles
+### Toggles (Main)
 Button             | Action
 -------------   | -------------
+Autoplay Animations | Makes animations play automatically when selected
 Toggle Shadow | Toggles the Cog's shadow.
 Toggle Body | Toggles the Cog's body. Useful for Cog head renders.
-Toggle Background | Toggles between gray and black for backgrounds. Black is the best color for renders as it has the least amount of / virtually no arftifacting.
-Reset Camera | Resets the camera to default values.
-Flatten Cog | Flattens the Cog vertically, useful for Cog Gallery renders.
-Reset Camera Roll | Reset's the camera's roll.
 Toggle Virtualize | Virtualizes the Cog, clicking the button multiple times will cycle through the different Virtualized colors, until getting turned off.
-Upload Suit Texture | Prompts you to upload a png file when pressed. Useful for testing out content packs.
-Take Screenshot | Takes a screenshot and saves it in the screenshots folder.
-Cycle Meter | Cycles through the hp value meters of a Cog.
-Render Frames | Renders all the frames in a Cog's body animation, each frame is saved in the screenshots folder.
-Toggle Costume | Toggles a Manager's halloween costume. Will only appear if the manager has one.
+Cycle Health Meter | Cycles through the hp value meters of a Cog.
+Reset Camera | Resets the camera to default values.
+Reset Camera Roll | Reset's the camera's roll.
 Upload Accessory | Prompts you to upload a bam file when pressed.
+Upload Suit Texture | Prompts you to upload a png file. Applied to the Cog's suit model.
+Upload Head Texture | Prompts you to upload a png file. Applied to the Cog's head model.
+Take Screenshot | Takes a screenshot and saves it in the screenshots folder.
+Render Frames | Renders all the frames in a Cog's body animation, each frame is saved in the screenshots folder.
+Add Pie Splat | Adds a pie splatter to the Cog, selected randomly. Can be used up to 3 times on a single Cog.
+Clear Pie Splats | Removes all the pie splatters from the Cog.
+Toggle Costume (Managers Only) | Toggles a Manager's halloween costume (if they have one).
 
-### Suit Toggles
+### Suit Toggles (Main)
 Button             | Action
 -------------   | -------------
-Make Executive | Turns the Cog into an executive.
+Make Executive | Turns the Cog into an Executive.
 Make Fired | Turns the Cog into a fired Cog.
 Make Waiter (Bossbots Only) | Turns the Cog into a waiter.
 
@@ -62,47 +89,70 @@ Button             | Action
 Body Animation Slider | Allows you to drag a slider to go through the frames of the selected body animation. Press play to loop said animation.
 Head Animation Slider | Allows you to drag a slider to go through the frames of the selected body animation. Press play to loop said animation.
 
+### Suit Library
+Tab             | Action
+-------------   | -------------
+Standard (Texture) | Select a suit texture to apply to the Cog. Includes: Department/Executive/Waiter/Unemployed/Desk Jockey suit textures.
+Manager (Texture) | Select a suit texture to apply to the Cog. Includes: All Manager/Contractor-unique suit textures.
+Halloween (Texture) | Select a suit texture to apply to the Cog. Includes: All Manager Halloween-costume suit textures.
+Skelecog (Texture) | Select a Skelecog texture to apply to the Cog. Includes: All Skelecog body textures. Using this on a generic Skelecog model will also alter their head texture.
+Suit Models | Select a suit model to apply to the Cog. Organized by Suit A (buff) > Suit B (thin) > Suit C (fat) > Skelecog
+Emblems | Select a department emblem to apply to the Cog. Also includes health light and no emblem.
+Neckties | Select a necktie model to apply to the Cog. Suit models that conflict with neckties have this feature disabled.
+
 ### Head HPR
 Button             | Action
 -------------   | -------------
-Heading (H) | Control's the Cog head's vertical rotation.
-Pitch (P) | Control's the Cog head's horizontal rotation.
-Roll (R) | Control's the Cog head's rotation.
-
-### Prop 1 HPR
-Button             | Action
--------------   | -------------
-Pos X | Control's the right prop's horizontal position.
-Pos Y | Control's the right prop's vertical position.
-Pos Z | Control's the right prop's up-and-down position.
-Heading | Control's the right prop's vertical rotation.
-Pitch | Control's the right prop's horizontal rotation.
-Roll | Control's the right prop's  rotation.
-Size | Control's the size of the right prop.
+Left/Right | Control's the Cog head's position on the X-axis. 
+Front/Back | Control's the Cog head's position on the Y-axis. 
+Up/Down | Control's the Cog head's position on the Z-axis. 
+Heading | Control's the Cog head's vertical rotation.
+Pitch | Control's the Cog head's horizontal rotation.
+Roll | Control's the Cog head's rotation.
+Scale | Control's the Cog head's size.
 Reset All | Reset's all sliders to default values.
 
-### Prop 2 HPR
+### Set Scale
 Button             | Action
 -------------   | -------------
-Pos X | Control's the left prop's horizontal position.
-Pos Y | Control's the left prop's vertical position.
-Pos Z | Control's the left prop's up-and-down position.
-Heading | Control's the left prop's vertical rotation.
-Pitch | Control's the left prop's horizontal rotation.
-Roll | Control's the left prop's rotation.
-Size | Control's the size of the left prop.
+Profile (Sx) | Control's the scale of the Cog/head on the X-axis.
+Portrait (Sy) | Control's the scale of the Cog/head on the Y-axis.
+Height (Sz) | Control's the scale of the Cog/head on the Z-axis.
+Reset All | Reset's all sliders to default values.
+
+### Set Color
+Button             | Action
+-------------   | -------------
+Hex (#RRGGBB): | Allows you to select the color to be used (via hex code or color picker).
+Set Cog ColorScale | Sets the color scale of the entire Cog.
+Set Head Color | Applies the color to the Cog's head.
+Set Hand Color | Changes the color of the Cog's hands. Does not work with Skelecog/Cog Boss bodies.
+Reset Cog Colors | Removes all Color changes applied to the Cog.
+Set Background Color | Changes the color of the background.
+Reset Background Color | Resets the color of the background to default.
+
+### Prop 1 HPR / Prop 2 HPR
+Button             | Action
+-------------   | -------------
+Left/Right | Control's the left/right prop's position on the X-axis. 
+Front/Back | Control's the left/right prop's position on the X-axis. 
+Up/Down | Control's the left/right prop's position on the Z-axis.
+Heading | Control's the left/right prop's vertical rotation.
+Pitch | Control's the left/right prop's horizontal rotation.
+Roll | Control's the left/right prop's rotation.
+Scale | Control's the size of the left/right prop.
 Reset All | Reset's all sliders to default values.
 
 ### Accessory HPR (Only visible when an accessory is loaded)
 Button             | Action
 -------------   | -------------
-Pos X | Control's the accessory's horizontal position.
-Pos Y | Control's the accessory's vertical position.
-Pos Z | Control's the accessory's up-and-down position.
+Left/Right | Control's the accessory's position on the X-axis. 
+Front/Back | Control's the accessory's position on the X-axis. 
+Up/Down | Control's the accessory's position on the Z-axis.
 Heading | Control's the accessory's vertical rotation.
 Pitch | Control's the accessory's horizontal rotation.
 Roll | Control's the accessory's rotation.
-Size | Control's the size of the accessory.
+Scale | Control's the size of the accessory.
 Reset All | Reset's all sliders to default values.
 
 ### Camera Controls
@@ -110,15 +160,22 @@ Key             | Action
 -------------   | -------------
 Control+Z	    | Optional keybind to reset the camera.
 
+### Limitations
+* You can only have one accessory (via Upload Accessory) and up to two props loaded at once.
+* Props are reparented to the Cog's left/right hand only.
+* Many toggle features do not work on Boss Cog bodies.
+* Pie Splatters will get cleared when choosing a new suit model from Suit Library.
 
 ### Known Bugs
+* Toggle virtualize can cause transparency issues. Examples include VP/Multislacker's lightbulb, Cog Boss HP lights, CLO's body shadow, and CEO's eyes.
+* When switching from a Manager with unique toggles (e.g. toggle costume, suit toggles) to a Boss Cog, these unique toggle options will persist.
 * The anchor prop has no texture.
-* White HP light won't show.
+* Upload Head Texture on Rainmaker and Count Erfit don't work properly.
 
 # Acknowledgements
 * [BoggTech's](https://github.com/BoggTech/) [VisorView](https://github.com/BoggTech/VisorView/tree/main) was used as a base and main inspiration for this program. Our utmost gratitude goes towards them.
 * Special thanks to Panda3D and Python and their contributors. 
-* Toontown Online and Toontown Corporate Clash assets all belong to their respective owners. Thank you to all of the talented artists and talented animators for their work on the Cogs and their various animations, whether it be body animations or head animations.
+* Toontown Online and Toontown Corporate Clash assets all belong to their respective owners. Thank you to all of the talented artists and talented animators for their breathtaking contributions. Thank you for keeping Toontown's legacy alive!
 
 ferrofluid - hi
 diggins
