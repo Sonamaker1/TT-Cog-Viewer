@@ -17,9 +17,11 @@ Hi! This tool is mainly used for viewing Corporate Clash Cogs as well as making 
 * Added Colors Tabber
 * Added Pie Splat functionality
 * Take Screenshot now darkens the background for the screenshot frame, removing artifacting
+* I forgor
 * Removed Herobrine
   
-
+## How to Download Updates
+* Simply download both the updated main.py and updated globals.py found in the src folder and replace the old main.py and old globals.py found in your Cog Viewer src folder.
 
 ## How to use 
 <b>FIRST ADD CORPORATE CLASH'S FILES:</b>
