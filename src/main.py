@@ -69,7 +69,7 @@ class ControlPanel(tk.Frame):
         self.prop2_loop_var = tk.BooleanVar(value=True)
 
         self.master.title("Corporate Clash Cog Viewer")
-        self.master.geometry("750x900")
+        self.master.geometry("700x900")
 
         top_level_notebook = ttk.Notebook(self)
         top_level_notebook.pack(fill="both", expand=True, padx=5, pady=5)
@@ -394,6 +394,8 @@ class ControlPanel(tk.Frame):
                    command=self.app.upload_custom_model).grid(row=4, column=1, sticky="ew", padx=5, pady=2)
         ttk.Button(frame, text="Upload Suit Texture",
                    command=self.app.upload_suit_texture).grid(row=5, column=1, sticky="ew", padx=5, pady=2)
+        ttk.Button(frame, text="Upload Head Part Texture",
+                   command=self.app.upload_additional_head_texture).grid(row=5, column=2, sticky="ew", padx=5, pady=2)
         ttk.Button(frame, text="Take Screenshot",
                    command=self.app.take_screenshot).grid(row=6, column=1, sticky="ew", padx=5, pady=2)
         ttk.Button(frame, text="Render Frames",
@@ -3060,11 +3062,142 @@ class CogViewer(ShowBase):
         self.upload_texture(suit_part, suit_target)
 
     def upload_head_texture(self):
-        head_part = "Head"
-        head_target = [
-            self.head
-        ]
+        cog_data = globals.COG_DATA.get(self.current_cog, None)
+        cog_name = cog_data["name"]
+        if "ttcc_ene_rainmaker" in cog_name:
+            root = tk.Tk()
+            root.withdraw()
+            file_path = filedialog.askopenfilename(
+                title="Select Head Texture",
+                filetypes=[("Image Files", "*.png *.jpg *.jpeg *.bmp *.tga"), ("All Files", "*.*")]
+            )
+
+            if not file_path:
+                print("Upload canceld")
+                return
+            try:
+                panda_path = Filename.fromOsSpecific(file_path)
+                panda_path.makeTrueCase()
+                new_tex = loader.loadTexture(panda_path)
+
+                if not new_tex:
+                    print("faile to load teture")
+                    return
+                if self.head:
+                    geomNode = self.head.find('**/head').node()
+                    state1 = geomNode.getGeomState(1)
+                    tex_attr1 = state1.getAttrib(TextureAttrib)
+
+                    if tex_attr1:
+                        for stage in tex_attr1.getOnStages():
+                            if stage.getName() == "rainmaker":
+                                new_state = state1.setAttrib(tex_attr1.addOnStage(stage, new_tex))
+                                geomNode.setGeomState(1, new_state)
+            except Exception as e:
+                print("what")
+            return
+
+        elif "ttcc_ene_counterfit" in cog_name:
+            root = tk.Tk()
+            root.withdraw()
+            file_path = filedialog.askopenfilename(
+                title="Select Head Texture",
+                filetypes=[("Image Files", "*.png *.jpg *.jpeg *.bmp *.tga"), ("All Files", "*.*")]
+            )
+
+            if not file_path:
+                print("Upload canceld")
+                return
+            try:
+                panda_path = Filename.fromOsSpecific(file_path)
+                panda_path.makeTrueCase()
+                new_tex = loader.loadTexture(panda_path)
+
+                if not new_tex:
+                    print("faile to load teture")
+                    return
+                
+                if self.head:
+                    gn_path = self.head.find("**/+GeomNode")
+                    
+                    if not gn_path.isEmpty():
+                        geomNode = gn_path.node()
+                        
+                        for i in range(geomNode.getNumGeoms()):
+                            state = geomNode.getGeomState(i)
+                            tex_attr = state.getAttrib(TextureAttrib)
+                            
+                            if tex_attr:
+                                for stage in tex_attr.getOnStages():
+                                    current_tex = tex_attr.getOnTexture(stage)
+                                    if current_tex and "ttcc_ene_counterfit" in current_tex.getFilename().getBasename():
+                                        new_state = state.setAttrib(tex_attr.addOnStage(stage, new_tex))
+                                        geomNode.setGeomState(i, new_state)
+
+            except Exception as e:
+                print("what")
+            return
+        elif "ttcc_ene_firestarter" in cog_name:
+            head_part = "Head"
+            head_target = [
+                self.head.find('**/Fire_Starter.001')
+            ]
+        else:
+            head_part = "Head"
+            head_target = [
+                self.head
+            ]
         self.upload_texture(head_part, head_target)
+    
+    def upload_additional_head_texture(self):
+        cog_data = globals.COG_DATA.get(self.current_cog, None)
+        cog_name = cog_data["name"]
+        if "ttcc_ene_rainmaker" in cog_name:
+            root = tk.Tk()
+            root.withdraw()
+            file_path = filedialog.askopenfilename(
+                title="Select Hair Texture",
+                filetypes=[("Image Files", "*.png *.jpg *.jpeg *.bmp *.tga"), ("All Files", "*.*")]
+            )
+
+            if not file_path:
+                print("Upload canceled.")
+                return
+
+            try:
+                panda_path = Filename.fromOsSpecific(file_path)
+                panda_path.makeTrueCase()
+                new_tex = loader.loadTexture(panda_path)
+                
+                if not new_tex: 
+                    print("Failed to load texture.")
+                    return
+
+                if self.head:
+                    geomNode = self.head.find("**/head").node()
+                    
+                    state0 = geomNode.getGeomState(0)
+                    tex_attr0 = state0.getAttrib(TextureAttrib)
+                    
+                    if tex_attr0:
+                        for stage in tex_attr0.getOnStages():
+                            if stage.getName() == "ttcc_ene_rainmaker_hair":
+                                new_state = state0.setAttrib(tex_attr0.addOnStage(stage, new_tex))
+                                geomNode.setGeomState(0, new_state)
+                                print(f"Applied Rainmaker Hair Texture: {file_path}")
+            
+            except Exception as e:
+                print(f"Error applying Rainmaker hair: {e}")
+            
+            return
+        target = []
+        if "ttcc_ene_firestarter" in cog_name:
+            if self.head:
+                fire = self.head.find('**/fire_seq')
+                if not fire.isEmpty():
+                    target.append(fire)
+        
+        self.upload_texture("Additional Head", target)
 
     # Used for Suit Library
     def apply_suit_texture(self, texture_path):
