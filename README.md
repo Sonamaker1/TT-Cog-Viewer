@@ -10,6 +10,8 @@ Hi! This tool is mainly used for viewing Corporate Clash Cogs as well as making 
 * [ImageMagick](https://imagemagick.org/script/download.php#windows) _Note: This one's optional, its only purpose is for cropping images._
 
 # Changelogs (Last Updated: December 17, 2025)
+* Fixed Upload Head Texture for Rainmaker, Firestarter and Count Erfit
+* Added Head Part Texture Button (Used for Firestarter's Fire and Rainmaker's Hair)
 * Added Department Heads (VP, CFO, CLO, CEO)
 * Added Suit Library
 * Added Upload Head Texture
@@ -172,7 +174,6 @@ Control+Z	    | Optional keybind to reset the camera.
 * Toggle virtualize can cause transparency issues. Examples include VP/Multislacker's lightbulb, Cog Boss HP lights, CLO's body shadow, and CEO's eyes.
 * When switching from a Manager with unique toggles (e.g. toggle costume, suit toggles) to a Boss Cog, these unique toggle options will persist.
 * The anchor prop has no texture.
-* Upload Head Texture on Rainmaker and Count Erfit don't work properly.
 
 # Acknowledgements
 * [BoggTech's](https://github.com/BoggTech/) [VisorView](https://github.com/BoggTech/VisorView/tree/main) was used as a base and main inspiration for this program. Our utmost gratitude goes towards them.
