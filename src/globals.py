@@ -8,58 +8,61 @@ DEFAULT_HPR = (180, 0, 0)
 
 DEFAULT_CAMERA_POS = (0, -20, 4.2)
 
-SCREENSHOT_DIR = "../screenshots"
-RESOURCES_DIR = "..\\resources"
-CONFIG_DIR = "../CogViewerConfig.prc"
+SCREENSHOT_DIR = "screenshots"
+RESOURCES_DIR = "resources"
+CONFIG_DIR = "CogViewerConfig.prc"
 
+def os_path_join(*in_args):
+    return "/".join(in_args)
+    
 # ***************** FIND BODY MODELS ***************
-SUIT_A_MODEL = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitA-mod.bam")  # a
-SUIT_B_MODEL = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitB-mod.bam")  # b
-SUIT_C_MODEL = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitC-mod.bam")  # c
-BOSS_COG_MODEL = os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-zero.bam")
+SUIT_A_MODEL = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitA-mod.bam")  # a
+SUIT_B_MODEL = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitB-mod.bam")  # b
+SUIT_C_MODEL = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitC-mod.bam")  # c
+BOSS_COG_MODEL = os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-zero.bam")
 
-SUIT_A_FEMALE_MODEL = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitA_f-mod.bam")  # af
-SUIT_B_FEMALE_MODEL = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitB_f-mod.bam")  # bf
-SUIT_C_FEMALE_MODEL = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitC_f-mod.bam")  # cf
+SUIT_A_FEMALE_MODEL = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitA_f-mod.bam")  # af
+SUIT_B_FEMALE_MODEL = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitB_f-mod.bam")  # bf
+SUIT_C_FEMALE_MODEL = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitC_f-mod.bam")  # cf
 
-SUIT_B_COLLAR_MODEL = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitB_highcollar-mod.bam")  # bc
-SUIT_PACESETTER = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitB_open-mod.bam")  # ps
-SUIT_RAINMAKER = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitB_longcoat-mod.bam")  # rm
-SUIT_HIGH_ROLLER = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitA_hroller-mod.bam")  # hr
+SUIT_B_COLLAR_MODEL = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitB_highcollar-mod.bam")  # bc
+SUIT_PACESETTER = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitB_open-mod.bam")  # ps
+SUIT_RAINMAKER = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitB_longcoat-mod.bam")  # rm
+SUIT_HIGH_ROLLER = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitA_hroller-mod.bam")  # hr
 
-SUIT_A_SKELECOG_MODEL = os.path.join(RESOURCES_DIR, "phase_5", "models", "char", "suitA_skeleton-zero.bam")  # as
-SUIT_B_SKELECOG_MODEL = os.path.join(RESOURCES_DIR, "phase_5", "models", "char", "suitB_skeleton-zero.bam")  # bs
-SUIT_C_SKELECOG_MODEL = os.path.join(RESOURCES_DIR, "phase_5", "models", "char", "suitC_skeleton-zero.bam")  # cs
+SUIT_A_SKELECOG_MODEL = os_path_join(RESOURCES_DIR, "phase_5", "models", "char", "suitA_skeleton-zero.bam")  # as
+SUIT_B_SKELECOG_MODEL = os_path_join(RESOURCES_DIR, "phase_5", "models", "char", "suitB_skeleton-zero.bam")  # bs
+SUIT_C_SKELECOG_MODEL = os_path_join(RESOURCES_DIR, "phase_5", "models", "char", "suitC_skeleton-zero.bam")  # cs
 
-SUIT_A_MPLAYER_OPEN = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitA_mplayer_open-mod.bam")  # mph
-SUIT_A_CHAINSAW_HW = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitA_chainsaw_hw-mod.bam")  # cch
-SUIT_A_ERFIT = os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suitA_erfit-mod.bam")
+SUIT_A_MPLAYER_OPEN = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitA_mplayer_open-mod.bam")  # mph
+SUIT_A_CHAINSAW_HW = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitA_chainsaw_hw-mod.bam")  # cch
+SUIT_A_ERFIT = os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suitA_erfit-mod.bam")
 
-TREADS_MODEL = os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-treads.bam")
-LEGS_MODEL = os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-legs-zero.bam")
+TREADS_MODEL = os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-treads.bam")
+LEGS_MODEL = os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-legs-zero.bam")
 
-VP_LEGS_MODEL = os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-legs-zero.bam")
-VP_TORSO_MODEL = os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-zero.bam")
-VP_HEAD_MODEL = os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "sellbotBoss-head-zero.bam")
-VP_TREADS_MODEL = os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-treads.bam")
+VP_LEGS_MODEL = os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-legs-zero.bam")
+VP_TORSO_MODEL = os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-zero.bam")
+VP_HEAD_MODEL = os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "sellbotBoss-head-zero.bam")
+VP_TREADS_MODEL = os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-treads.bam")
 
-CFO_TORSO_MODEL = os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-zero.bam")
-CFO_LEGS_MODEL = os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-legs-zero.bam")
-CFO_HEAD_MODEL = os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "cashbotBoss-head-zero.bam")
+CFO_TORSO_MODEL = os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-zero.bam")
+CFO_LEGS_MODEL = os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-legs-zero.bam")
+CFO_HEAD_MODEL = os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "cashbotBoss-head-zero.bam")
 
-CLO_BODY_MODEL = os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "lawbotBoss-torso-zero.bam")
-CLO_HEAD_MODEL = os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "lawbotBoss-head-zero.bam")
+CLO_BODY_MODEL = os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "lawbotBoss-torso-zero.bam")
+CLO_HEAD_MODEL = os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "lawbotBoss-head-zero.bam")
 
-CEO_BODY_MODEL = os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-zero.bam")
-CEO_HEAD_MODEL = os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "bossbotBoss-head-zero.bam")
+CEO_BODY_MODEL = os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-zero.bam")
+CEO_HEAD_MODEL = os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "bossbotBoss-head-zero.bam")
 
-VP_TORSO_ANIMS = glob.glob(os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-*.bam"))
-VP_LEGS_ANIMS = glob.glob(os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-legs-*.bam"))
+VP_TORSO_ANIMS = glob.glob(os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-*.bam"))
+VP_LEGS_ANIMS = glob.glob(os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-legs-*.bam"))
 
 # ***************** FIND SKELECOG HEAD MODELS ***************
-SUIT_A_SKELECOG_HEAD = os.path.join(RESOURCES_DIR, "phase_5", "models", "char", "suitA_skeleton_skull-zero.bam")
-SUIT_B_SKELECOG_HEAD = os.path.join(RESOURCES_DIR, "phase_5", "models", "char", "suitB_skeleton_skull-zero.bam")
-SUIT_C_SKELECOG_HEAD = os.path.join(RESOURCES_DIR, "phase_5", "models", "char", "suitC_skeleton_skull-zero.bam")
+SUIT_A_SKELECOG_HEAD = os_path_join(RESOURCES_DIR, "phase_5", "models", "char", "suitA_skeleton_skull-zero.bam")
+SUIT_B_SKELECOG_HEAD = os_path_join(RESOURCES_DIR, "phase_5", "models", "char", "suitB_skeleton_skull-zero.bam")
+SUIT_C_SKELECOG_HEAD = os_path_join(RESOURCES_DIR, "phase_5", "models", "char", "suitC_skeleton_skull-zero.bam")
 
 SKELECOG_HEAD_DICT = {SUIT_A_SKELECOG_HEAD, SUIT_B_SKELECOG_HEAD, SUIT_C_SKELECOG_HEAD}
 
@@ -76,10 +79,10 @@ def create_anim_dict(file_list, prefix_len_to_strip):
 VP_TORSO_ANIM_DICT = create_anim_dict(VP_TORSO_ANIMS, len("bossCog-torso-"))
 VP_LEGS_ANIM_DICT = create_anim_dict(VP_LEGS_ANIMS, len("bossCog-legs-"))
 
-VP_HEAD_ANIMS = glob.glob(os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-head-*.bam"))
-CFO_HEAD_ANIMS = glob.glob(os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "cashbotBoss-head-*.bam"))
-CLO_HEAD_ANIMS = glob.glob(os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "lawbotBoss-head-*.bam"))
-CEO_HEAD_ANIMS = glob.glob(os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "bossbotBoss-head-*.bam"))
+VP_HEAD_ANIMS = glob.glob(os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-head-*.bam"))
+CFO_HEAD_ANIMS = glob.glob(os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "cashbotBoss-head-*.bam"))
+CLO_HEAD_ANIMS = glob.glob(os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "lawbotBoss-head-*.bam"))
+CEO_HEAD_ANIMS = glob.glob(os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "bossbotBoss-head-*.bam"))
 
 VP_HEAD_ANIM_DICT = create_anim_dict(VP_HEAD_ANIMS, len("bossCog-head-"))
 CFO_HEAD_ANIM_DICT = create_anim_dict(CFO_HEAD_ANIMS, len("cashbotBoss-head-"))
@@ -128,20 +131,20 @@ SUIT_MODEL_NAMES = {
 }
 
 # ***************** SHADOWS ***************
-SHADOW_MODEL = os.path.join(RESOURCES_DIR, "phase_3", "models", "props", "drop_shadow.bam")
+SHADOW_MODEL = os_path_join(RESOURCES_DIR, "phase_3", "models", "props", "drop_shadow.bam")
 SHADOW_SCALE = 0.45
 SHADOW_COLOR = (0.0, 0.0, 0.0, 0.5)
 
 # ***************** COG EMBLEM ***************
-COG_ICONS = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "ttcc_ene_insignias.bam")
-COG_ICONS_BASE = os.path.join(RESOURCES_DIR, "phase_3.5", "models", "char", "ttcc_ene_insignias.bam")
+COG_ICONS = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "ttcc_ene_insignias.bam")
+COG_ICONS_BASE = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "ttcc_ene_insignias.bam")
 COG_ICON_HPR = (0.00, 0.00, 0.00, 180.00, 0.00, 0.00, 1.00, 1.00, 1.00)
 
 # ***************** FIND SUIT ANIMATIONS ***************
-SUIT_A_ANIMATION_PATHS = glob.glob(os.path.join(RESOURCES_DIR, "**", "suitA-*.bam"), recursive=True)
-SUIT_B_ANIMATION_PATHS = glob.glob(os.path.join(RESOURCES_DIR, "**", "suitB-*.bam"), recursive=True)
-SUIT_C_ANIMATION_PATHS = glob.glob(os.path.join(RESOURCES_DIR, "**", "suitC-*.bam"), recursive=True)
-BOSS_COG_ANIMATION_PATHS = glob.glob(os.path.join(RESOURCES_DIR, "**", "bossCog-torso*.bam"), recursive=True)
+SUIT_A_ANIMATION_PATHS = glob.glob(os_path_join(RESOURCES_DIR, "**", "suitA-*.bam"), recursive=True)
+SUIT_B_ANIMATION_PATHS = glob.glob(os_path_join(RESOURCES_DIR, "**", "suitB-*.bam"), recursive=True)
+SUIT_C_ANIMATION_PATHS = glob.glob(os_path_join(RESOURCES_DIR, "**", "suitC-*.bam"), recursive=True)
+BOSS_COG_ANIMATION_PATHS = glob.glob(os_path_join(RESOURCES_DIR, "**", "bossCog-torso*.bam"), recursive=True)
 
 SUIT_A_ANIMATION_DICT = {}
 SUIT_B_ANIMATION_DICT = {}
@@ -171,10 +174,10 @@ SUIT_C_ANIMATIONS.sort()
 BOSS_COG_ANIMATIONS.sort()
 
 # NEUTRAL ANIMATIONS
-SUIT_A_NEUTRAL_ANIM_PATH = glob.glob(os.path.join(RESOURCES_DIR, "**", "suitA-neutral.bam"), recursive=True)
-SUIT_B_NEUTRAL_ANIM_PATH = glob.glob(os.path.join(RESOURCES_DIR, "**", "suitB-neutral.bam"), recursive=True)
-SUIT_C_NEUTRAL_ANIM_PATH = glob.glob(os.path.join(RESOURCES_DIR, "**", "suitC-neutral.bam"), recursive=True)
-BOSS_COG_NEUTRAL_ANIM_PATH = glob.glob(os.path.join(RESOURCES_DIR, "**", "bossCog-torso-Fb_neutral.bam"),
+SUIT_A_NEUTRAL_ANIM_PATH = glob.glob(os_path_join(RESOURCES_DIR, "**", "suitA-neutral.bam"), recursive=True)
+SUIT_B_NEUTRAL_ANIM_PATH = glob.glob(os_path_join(RESOURCES_DIR, "**", "suitB-neutral.bam"), recursive=True)
+SUIT_C_NEUTRAL_ANIM_PATH = glob.glob(os_path_join(RESOURCES_DIR, "**", "suitC-neutral.bam"), recursive=True)
+BOSS_COG_NEUTRAL_ANIM_PATH = glob.glob(os_path_join(RESOURCES_DIR, "**", "bossCog-torso-Fb_neutral.bam"),
                                        recursive=True)
 
 # ***************** FIND HEAD ANIMATIONS ***************
@@ -183,7 +186,7 @@ HEAD_ANIMS = []
 
 
 def HEAD_ANIMATION_PATH(cog_name):
-    HEAD_ANIMATION_PATHS = glob.glob(os.path.join(RESOURCES_DIR, "**", f"{cog_name}*.bam"), recursive=True)
+    HEAD_ANIMATION_PATHS = glob.glob(os_path_join(RESOURCES_DIR, "**", f"{cog_name}*.bam"), recursive=True)
     HEAD_ANIMATION_DICT = {}
     NAME_LENGTH = len(cog_name)
 
@@ -201,11 +204,11 @@ def HEAD_ANIMATION_PATH(cog_name):
 
 
 def PATH_PROP(prop_name):
-    path = os.path.join(RESOURCES_DIR, "phase_5", "models", "props", f"{prop_name}.bam")
+    path = os_path_join(RESOURCES_DIR, "phase_5", "models", "props", f"{prop_name}.bam")
     return path
 
 def map_path(phase, texture_name):
-    return os.path.join(RESOURCES_DIR, f"phase_{phase}", "maps", texture_name)
+    return os_path_join(RESOURCES_DIR, f"phase_{phase}", "maps", texture_name)
 
 PHASES = ["3", "3.5", "4", "5", "5.5", "6", "7", "8", "9", "10", "11", "12", "13", "14"]
 
@@ -219,36 +222,36 @@ EXCLUDE_SUFFIXES = ["_camera.bam", "_cammodel.bam"]
 all_file_paths = []
 for phase in PHASES:
     for folder_name in FOLDERS_TO_SEARCH:
-        current_search_path = os.path.join(RESOURCES_DIR, f"phase_{phase}", "models", folder_name)
+        current_search_path = os_path_join(RESOURCES_DIR, f"phase_{phase}", "models", folder_name)
 
         if not os.path.exists(current_search_path):
             continue
 
         if folder_name == "accessories":
-            search_pattern = os.path.join(current_search_path, "**", "*.bam")
+            search_pattern = os_path_join(current_search_path, "**", "*.bam")
             all_file_paths.extend(glob.glob(search_pattern, recursive=True))
         else:
-            search_pattern = os.path.join(current_search_path, "*.bam")
+            search_pattern = os_path_join(current_search_path, "*.bam")
             all_file_paths.extend(glob.glob(search_pattern))
 
-golf_path = os.path.join(RESOURCES_DIR, "phase_6", "models", "golf")
+golf_path = os_path_join(RESOURCES_DIR, "phase_6", "models", "golf")
 if os.path.exists(golf_path):
-    search_pattern = os.path.join(golf_path, "**", "*.bam")
+    search_pattern = os_path_join(golf_path, "**", "*.bam")
     all_file_paths.extend(glob.glob(search_pattern, recursive=True))
 
-foog_path = os.path.join(RESOURCES_DIR, "phase_12", "models", "bossbotHQ")
+foog_path = os_path_join(RESOURCES_DIR, "phase_12", "models", "bossbotHQ")
 if os.path.exists(foog_path):
-    search_pattern = os.path.join(foog_path, "**", "*.bam")
+    search_pattern = os_path_join(foog_path, "**", "*.bam")
     all_file_paths.extend(glob.glob(search_pattern, recursive=True))
 
-plant_path = os.path.join(RESOURCES_DIR, "phase_11", "models", "lawbotHQ")
+plant_path = os_path_join(RESOURCES_DIR, "phase_11", "models", "lawbotHQ")
 if os.path.exists(plant_path):
-    search_pattern = os.path.join(plant_path, "**", "*.bam")
+    search_pattern = os_path_join(plant_path, "**", "*.bam")
     all_file_paths.extend(glob.glob(search_pattern, recursive=True))
 
-rose_path = os.path.join(RESOURCES_DIR, "phase_6", "models", "miniboss")
+rose_path = os_path_join(RESOURCES_DIR, "phase_6", "models", "miniboss")
 if os.path.exists(rose_path):
-    search_pattern = os.path.join(rose_path, "**", "*.bam")
+    search_pattern = os_path_join(rose_path, "**", "*.bam")
     all_file_paths.extend(glob.glob(search_pattern, recursive=True))
 
 file_path_map = {}
@@ -328,64 +331,64 @@ SKELECOG_METER_COLORS = [
 ]
 
 # ***************** COG SUIT TEXTURES ***************
-SELLBOT_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_s.png")
-SELLBOT_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_s_e.png")
+SELLBOT_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_s.png")
+SELLBOT_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_s_e.png")
 
-CASHBOT_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_m.png")
-CASHBOT_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_m_e.png")
+CASHBOT_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_m.png")
+CASHBOT_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_m_e.png")
 
-LAWBOT_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_l.png")
-LAWBOT_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_l_e.png")
+LAWBOT_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_l.png")
+LAWBOT_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_l_e.png")
 
-BOSSBOT_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_c.png")
-BOSSBOT_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_c_e.png")
+BOSSBOT_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_c.png")
+BOSSBOT_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_c_e.png")
 
-WAITER_SUIT = os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_waiter.png")
-WAITER_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_waiter_e.png")
+WAITER_SUIT = os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_waiter.png")
+WAITER_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_waiter_e.png")
 
-BOARDBOT_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_g.png")
-BOARDBOT_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_g_e.png")
+BOARDBOT_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_g.png")
+BOARDBOT_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_g_e.png")
 
-UNEMPLOYED_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_unemployed.png")
+UNEMPLOYED_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_unemployed.png")
 
 # Specific Cog Suits
-HIGH_ROLLER_SUIT = os.path.join(RESOURCES_DIR, "phase_12", "maps", "cc_t_ene_highroller_suit.png")
-HIGH_ROLLER_BODY = os.path.join(RESOURCES_DIR, "phase_12", "maps", "cc_t_ene_highroller_body.png")
-HIGH_ROLLER_PRODIGAL_SUIT = os.path.join(RESOURCES_DIR, "phase_12", "maps", "cc_t_ene_highroller_suit_black.png")
-HIGH_ROLLER_PRODIGAL_BODY = os.path.join(RESOURCES_DIR, "phase_12", "maps", "cc_t_ene_highroller_body_black.png")
+HIGH_ROLLER_SUIT = os_path_join(RESOURCES_DIR, "phase_12", "maps", "cc_t_ene_highroller_suit.png")
+HIGH_ROLLER_BODY = os_path_join(RESOURCES_DIR, "phase_12", "maps", "cc_t_ene_highroller_body.png")
+HIGH_ROLLER_PRODIGAL_SUIT = os_path_join(RESOURCES_DIR, "phase_12", "maps", "cc_t_ene_highroller_suit_black.png")
+HIGH_ROLLER_PRODIGAL_BODY = os_path_join(RESOURCES_DIR, "phase_12", "maps", "cc_t_ene_highroller_body_black.png")
 
-MP_BODY = os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_mplayer_body_totally_normal.png")
+MP_BODY = os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_mplayer_body_totally_normal.png")
 
-INSIDER_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_highcollar_g.png")
-INSIDER_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_highcollar_g_e.png")
-INSIDER_UNEMPLOYED_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_highcollar_unemployed.png")
+INSIDER_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_highcollar_g.png")
+INSIDER_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_highcollar_g_e.png")
+INSIDER_UNEMPLOYED_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "ttcc_ene_suittex_highcollar_unemployed.png")
 
-DESK_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "schoolhouse", "dummy", "ttcc_ene_suittex_djockey.png")
-DESK_BRIAN_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "schoolhouse", "dummy",
+DESK_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "schoolhouse", "dummy", "ttcc_ene_suittex_djockey.png")
+DESK_BRIAN_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "schoolhouse", "dummy",
                                "ttcc_ene_suittex_ptjockey.png")
-DESK_BRIAN_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "schoolhouse", "dummy",
+DESK_BRIAN_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "schoolhouse", "dummy",
                                    "ttcc_ene_suittex_ptjockey_e.png")
 
-CHAINSAW_SUIT = os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_chainsaw.png")
-CHAINSAW_SUIT_HW = os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_chainsaw_hw.png")
+CHAINSAW_SUIT = os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_chainsaw.png")
+CHAINSAW_SUIT_HW = os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_chainsaw_hw.png")
 
 # Skelecog Suits
-SELLBOT_SKELE_SUIT = os.path.join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_s.png")
-SELLBOT_SKELE_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_s_e.png")
+SELLBOT_SKELE_SUIT = os_path_join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_s.png")
+SELLBOT_SKELE_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_s_e.png")
 
-CASHBOT_SKELE_SUIT = os.path.join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_m.png")
-CASHBOT_SKELE_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_m_e.png")
+CASHBOT_SKELE_SUIT = os_path_join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_m.png")
+CASHBOT_SKELE_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_m_e.png")
 
-LAWBOT_SKELE_SUIT = os.path.join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_l.png")
-LAWBOT_SKELE_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_l_e.png")
+LAWBOT_SKELE_SUIT = os_path_join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_l.png")
+LAWBOT_SKELE_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_l_e.png")
 
-BOSSBOT_SKELE_SUIT = os.path.join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_c.png")
-BOSSBOT_SKELE_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_c_e.png")
+BOSSBOT_SKELE_SUIT = os_path_join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_c.png")
+BOSSBOT_SKELE_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_c_e.png")
 
-SKELE_WAITER_SUIT = os.path.join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_waiter.png")
+SKELE_WAITER_SUIT = os_path_join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_waiter.png")
 
-BOARDBOT_SKELE_SUIT = os.path.join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_g.png")
-BOARDBOT_SKELE_EXE_SUIT = os.path.join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_g_e.png")
+BOARDBOT_SKELE_SUIT = os_path_join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_g.png")
+BOARDBOT_SKELE_EXE_SUIT = os_path_join(RESOURCES_DIR, "phase_5", "maps", "ttcc_ene_skelecog_g_e.png")
 
 SKELE_UNEMPLOYED_SUIT = map_path(5, "ttcc_ene_skelecog_unemployed.png")
 
@@ -474,26 +477,26 @@ SUIT_TEXTURES = {
 }
 
 # ***************** UNIQUE COG HEAD TEXTURES ***************
-BAGHOLDER = os.path.join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_bagholder.png")
-BAGHOLDER_EXE = os.path.join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_bagholder_exe.png")
-BAGHOLDER_FIRED = os.path.join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_bagholder_unemployed.png")
+BAGHOLDER = os_path_join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_bagholder.png")
+BAGHOLDER_EXE = os_path_join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_bagholder_exe.png")
+BAGHOLDER_FIRED = os_path_join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_bagholder_unemployed.png")
 
-INSIDER = os.path.join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_insider.png")
-INSIDER_EXE = os.path.join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_insider_exe.png")
-INSIDER_FIRED = os.path.join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_insider_unemployed.png")
+INSIDER = os_path_join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_insider.png")
+INSIDER_EXE = os_path_join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_insider_exe.png")
+INSIDER_FIRED = os_path_join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_insider_unemployed.png")
 
-HEADHONCHO = os.path.join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_headhoncho.png")
-HEADHONCHO_EXE = os.path.join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_headhoncho_exe.png")
-HEADHONCHO_FIRED = os.path.join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_headhoncho_unemployed.png")
+HEADHONCHO = os_path_join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_headhoncho.png")
+HEADHONCHO_EXE = os_path_join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_headhoncho_exe.png")
+HEADHONCHO_FIRED = os_path_join(RESOURCES_DIR, "phase_14", "maps", "cc_t_ene_headhoncho_unemployed.png")
 
-CHAINSAW = os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_chainsaw.png")
-CHAINSAW_OVERRIDE = os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_chainsaw_b.png")
-CHAINSAW_HW = os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_chainsaw_hw_b.png")
-CHAINSAW_OVERRIDE_HW = os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_chainsaw_hw.png")
+CHAINSAW = os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_chainsaw.png")
+CHAINSAW_OVERRIDE = os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_chainsaw_b.png")
+CHAINSAW_HW = os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_chainsaw_hw_b.png")
+CHAINSAW_OVERRIDE_HW = os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_chainsaw_hw.png")
 
-MULTISLACKER = os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_multislacker.png")
-MULTISLACKER_STATIC_HW = os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_multislacker_static_hw.png")
-MULTISLACKER_SUIT = os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_mslacker.png")
+MULTISLACKER = os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_multislacker.png")
+MULTISLACKER_STATIC_HW = os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_multislacker_static_hw.png")
+MULTISLACKER_SUIT = os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_mslacker.png")
 
 SUIT_TEXTURE_PATH = {
     "s": [SELLBOT_SUIT, SELLBOT_EXE_SUIT, UNEMPLOYED_SUIT],
@@ -573,7 +576,7 @@ NO_NECKTIE_SUITS = {
 COG_DATA = {
     # *******************   SELLBOTS **********************************
     "Cold Caller": {"suitTex": SELLBOT_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
+                    "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
                                          "ttcc_ene_coldcaller.bam"),
                     "hands": (19 / 255, 58 / 255, 222 / 255, 1),
                     "name": "coldcaller",
@@ -585,7 +588,7 @@ COG_DATA = {
                     "emblem": "emblem_sales"},
 
     "Telemarketer": {"suitTex": SELLBOT_SUIT,
-                     "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
+                     "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
                                           "ttcc_ene_telemarketer.bam"),
                      "name": "telemarketer",
                      "hands": (236 / 255, 205 / 255, 193 / 255, 1),
@@ -597,7 +600,7 @@ COG_DATA = {
                      "emblem": "emblem_sales"},
 
     "Name Dropper": {"suitTex": SELLBOT_SUIT,
-                     "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
+                     "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
                                           "ttcc_ene_namedropper.bam"),
                      "hands": (193 / 255, 175 / 255, 205 / 255, 1),
                      "name": "namedropper",
@@ -609,7 +612,7 @@ COG_DATA = {
                      "emblem": "emblem_sales"},
 
     "Glad Hander": {"suitTex": SELLBOT_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
+                    "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
                                          "ttcc_ene_gladhander.bam"),
                     "hands": (210 / 255, 214 / 255, 213 / 255, 1),
                     "name": "gladhander",
@@ -621,7 +624,7 @@ COG_DATA = {
                     "emblem": "emblem_sales"},
 
     "Mover and Shaker": {"suitTex": SELLBOT_SUIT,
-                         "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
+                         "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
                                               "ttcc_ene_moverandshaker.bam"),
                          "name": "moverandshaker",
                          "hands": (236 / 255, 205 / 255, 193 / 255, 1),
@@ -633,7 +636,7 @@ COG_DATA = {
                          "emblem": "emblem_sales"},
 
     "Two Face": {"suitTex": SELLBOT_SUIT,
-                 "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits", "ttcc_ene_twoface.bam"),
+                 "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits", "ttcc_ene_twoface.bam"),
                  "hands": (236 / 255, 205 / 255, 193 / 255, 1),
                  "name": "twoface",
                  "scale": 0.86633,
@@ -644,7 +647,7 @@ COG_DATA = {
                  "emblem": "emblem_sales"},
 
     "Mingler": {"suitTex": SELLBOT_SUIT,
-                "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits", "ttcc_ene_mingler.bam"),
+                "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits", "ttcc_ene_mingler.bam"),
                 "name": "mingler",
                 "hands": (242 / 255, 191 / 255, 242 / 255, 1),
                 "scale": 0.94884,
@@ -655,7 +658,7 @@ COG_DATA = {
                 "emblem": "emblem_sales"},
 
     "Mr. Hollywood": {"suitTex": SELLBOT_SUIT,
-                      "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
+                      "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
                                            "ttcc_ene_mrhollywood.bam"),
                       "hands": (210 / 255, 214 / 255, 213 / 255, 1),
                       "name": "mrhollywood",
@@ -678,8 +681,8 @@ COG_DATA = {
                         "emblem": "emblem_sales"},
 
     "P.R.R.": {"suitTex": SELLBOT_SKELE_EXE_SUIT,
-               "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits", "ttcc_ene_dopr-zero.bam"),
-               "headTex": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_dopr.png"),
+               "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits", "ttcc_ene_dopr-zero.bam"),
+               "headTex": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_dopr.png"),
                "hands": (122 / 255, 90 / 255, 125 / 255, 1),
                "name": "ttcc_ene_dopr",
                "scale": 1.4864552709359605911330049261084,
@@ -688,12 +691,12 @@ COG_DATA = {
                "suit": "cs",
                "emblem": "emblem_sales",
                "hasHalloween": 1,
-               "headTex_HW": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_dopr_hw.png"),
-               "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_skelecog_dopr_hw.png"),},
+               "headTex_HW": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_dopr_hw.png"),
+               "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_skelecog_dopr_hw.png"),},
 
     "D.O.P.A.": {"suitTex": SELLBOT_SKELE_EXE_SUIT,
-                 "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits", "ttcc_ene_dopa-zero.bam"),
-                 "headTex": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_dopa.png"),
+                 "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits", "ttcc_ene_dopa-zero.bam"),
+                 "headTex": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_dopa.png"),
                  "hands": (122 / 255, 90 / 255, 125 / 255, 1),
                  "headSize": 0.9090909090909,
                  "name": "ttcc_ene_dopa",
@@ -703,11 +706,11 @@ COG_DATA = {
                  "suit": "cs",
                  "emblem": "emblem_sales",
                  "hasHalloween": 1,
-                 "headTex_HW": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_dopa_hw.png"),
-                 "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_skelecog_dopa_hw.png")},
+                 "headTex_HW": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_dopa_hw.png"),
+                 "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_skelecog_dopa_hw.png")},
 
-    "Bellringer": {"suitTex": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_bellring.png"),
-                   "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
+    "Bellringer": {"suitTex": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_bellring.png"),
+                   "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
                                         "ttcc_ene_bellringer-zero.bam"),
                    "hands": (168 / 255, 127 / 255, 63 / 255, 1),
                    "name": "ttcc_ene_bellringer",
@@ -719,12 +722,12 @@ COG_DATA = {
                    "animFolder": "phase_9",
                    "emblem": "emblem_sales",
                    "hasHalloween": 1,
-                   "headTex_HW": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_bellringer_hw.png"),
-                   "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_bellring_hw.png"),
+                   "headTex_HW": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_bellringer_hw.png"),
+                   "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_bellring_hw.png"),
                    "handsHW": (156 / 255, 168 / 255, 179 / 255, 1)},
 
-    "Prethinker": {"suitTex": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_prethink.png"),
-                   "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
+    "Prethinker": {"suitTex": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_prethink.png"),
+                   "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
                                         "ttcc_ene_prethinker-zero.bam"),
                    "hands": (128 / 255, 113 / 255, 142 / 255, 1),
                    "name": "ttcc_ene_prethinker",
@@ -735,13 +738,13 @@ COG_DATA = {
                    "animFolder": "phase_9",
                    "emblem": "emblem_sales",
                    "hasHalloween": 1,
-                   "glassTex": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_prethinker_glass_hw.png"),
-                   "headTex_HW": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_prethinker_hw.png"),
-                   "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_prethink_hw.png"),
+                   "glassTex": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_prethinker_glass_hw.png"),
+                   "headTex_HW": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_prethinker_hw.png"),
+                   "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_prethink_hw.png"),
                    "handsHW": (137 / 255, 142 / 255, 160 / 255, 1)},
 
-    "Multislacker": {"suitTex": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_mslacker.png"),
-                     "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
+    "Multislacker": {"suitTex": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_mslacker.png"),
+                     "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
                                           "ttcc_ene_multislacker-zero.bam"),
                      "hands": (115 / 255, 115 / 255, 115 / 255, 1),
                      "name": "ttcc_ene_multislacker",
@@ -753,11 +756,11 @@ COG_DATA = {
                      "suitToggle": "ms",
                      "emblem": "emblem_sales",
                      "hasHalloween": 1,
-                     "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_mslacker_hw.png"),
+                     "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_mslacker_hw.png"),
                      "handsHW": (115 / 255, 115 / 255, 115 / 255, 1)},
 
-    "Pacesetter": {"suitTex": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_pacesetter.png"),
-                   "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
+    "Pacesetter": {"suitTex": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_suittex_pacesetter.png"),
+                   "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "suits",
                                         "ttcc_ene_pacesetter-zero.bam"),
                    "hands": (94 / 255, 93 / 255, 93 / 255, 1),
                    "name": "ttcc_ene_pacesetter",
@@ -769,7 +772,7 @@ COG_DATA = {
                    "animFolder": "phase_9",
                    "emblem": "emblem_sales",
                    "hasHalloween": 1,
-                   "headTex_HW": os.path.join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_pacesetter_hw.png"),
+                   "headTex_HW": os_path_join(RESOURCES_DIR, "phase_9", "maps", "ttcc_ene_pacesetter_hw.png"),
                    "handsHW": (94 / 255, 93 / 255, 93 / 255, 1)},
 
     "Buff Sellbot Skelecog": {"suitTex": SELLBOT_SKELE_SUIT,
@@ -807,7 +810,7 @@ COG_DATA = {
 
     # *******************   CASHBOTS **********************************
     "Short Change": {"suitTex": CASHBOT_SUIT,
-                     "head": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
+                     "head": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
                                           "ttcc_ene_shortchange.bam"),
                      "hands": (75 / 255, 166 / 255, 222 / 255, 1),
                      "name": "shortchange",
@@ -819,7 +822,7 @@ COG_DATA = {
                      "emblem": "emblem_money"},
 
     "Penny Pincher": {"suitTex": CASHBOT_SUIT,
-                      "head": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
+                      "head": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
                                            "ttcc_ene_pennypincher.bam"),
                       "name": "pennypincher",
                       "hands": (203 / 255, 82 / 255, 73 / 255, 1),
@@ -831,7 +834,7 @@ COG_DATA = {
                       "emblem": "emblem_money"},
 
     "Tightwad": {"suitTex": CASHBOT_SUIT,
-                 "head": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits", "ttcc_ene_tightwad.bam"),
+                 "head": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits", "ttcc_ene_tightwad.bam"),
                  "hands": (166 / 255, 242 / 255, 217 / 255, 1),
                  "name": "tightwad",
                  "scale": 1.08695,
@@ -842,7 +845,7 @@ COG_DATA = {
                  "emblem": "emblem_money"},
 
     "Bean Counter": {"suitTex": CASHBOT_SUIT,
-                     "head": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
+                     "head": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
                                           "ttcc_ene_beancounter.bam"),
                      "hands": (164 / 255, 178 / 255, 168 / 255, 1),
                      "name": "beancounter",
@@ -854,7 +857,7 @@ COG_DATA = {
                      "emblem": "emblem_money"},
 
     "Number Cruncher": {"suitTex": CASHBOT_SUIT,
-                        "head": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
+                        "head": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
                                              "ttcc_ene_numbercruncher.bam"),
                         "name": "numbercruncher",
                         "hands": (166 / 255, 242 / 255, 217 / 255, 1),
@@ -866,7 +869,7 @@ COG_DATA = {
                         "emblem": "emblem_money"},
 
     "Money Bags": {"suitTex": CASHBOT_SUIT,
-                   "head": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits", "ttcc_ene_moneybags.bam"),
+                   "head": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits", "ttcc_ene_moneybags.bam"),
                    "hands": (171 / 255, 194 / 255, 188 / 255, 1),
                    "name": "moneybags",
                    "scale": 1.28019,
@@ -877,7 +880,7 @@ COG_DATA = {
                    "emblem": "emblem_money"},
 
     "Loan Shark": {"suitTex": CASHBOT_SUIT,
-                   "head": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits", "ttcc_ene_loanshark.bam"),
+                   "head": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits", "ttcc_ene_loanshark.bam"),
                    "name": "loanshark",
                    "hands": (171 / 255, 194 / 255, 188 / 255, 1),
                    "scale": 1.22873,
@@ -888,7 +891,7 @@ COG_DATA = {
                    "emblem": "emblem_money"},
 
     "Robber Baron": {"suitTex": CASHBOT_SUIT,
-                     "head": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
+                     "head": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
                                           "ttcc_ene_robberbaron.bam"),
                      "hands": (188 / 255, 201 / 255, 196 / 255, 1),
                      "name": "robberbaron",
@@ -910,8 +913,8 @@ COG_DATA = {
                         "suit": "cs",
                         "emblem": "emblem_money"},
 
-    "Duck Shuffler": {"suitTex": os.path.join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_duckshfl.png"),
-                      "head": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
+    "Duck Shuffler": {"suitTex": os_path_join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_duckshfl.png"),
+                      "head": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
                                            "ttcc_ene_duckshuffler-zero.bam"),
                       "name": "ttcc_ene_duckshuffler",
                       "hands": (182 / 255, 30 / 255, 14 / 255, 1),
@@ -923,13 +926,13 @@ COG_DATA = {
                       "emblem": "emblem_money",
                       # hallowtest
                       "hasHalloween": 1,
-                      "headTex_HW": os.path.join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_duckshuffler_hw.png"),
-                      "slotTex": os.path.join(RESOURCES_DIR, "phase_10", "maps", "slot_hw.png"),
-                      "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_duckshfl_hw.png"),
+                      "headTex_HW": os_path_join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_duckshuffler_hw.png"),
+                      "slotTex": os_path_join(RESOURCES_DIR, "phase_10", "maps", "slot_hw.png"),
+                      "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_duckshfl_hw.png"),
                       "handsHW": (158 / 255, 158 / 255, 86 / 255, 1)},
 
-    "Treekiller": {"suitTex": os.path.join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_treek.png"),
-                   "head": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
+    "Treekiller": {"suitTex": os_path_join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_treek.png"),
+                   "head": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
                                         "ttcc_ene_treekiller-zero.bam"),
                    "headSize": 0.89873417721518987341772151898734,
                    "headPos": -0.15,
@@ -941,13 +944,13 @@ COG_DATA = {
                    "cog": "treekiller",
                    "emblem": "emblem_money",
                    "hasHalloween": 1,
-                   "headModel_HW": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
+                   "headModel_HW": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
                                                 "ttcc_ene_treekiller_hw-zero.bam"),
-                   "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_treek_hw.png"),
+                   "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_treek_hw.png"),
                    "handsHW": (101 / 255, 39 / 255, 64 / 255, 1)},
 
-    "Plutocrat": {"suitTex": os.path.join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_pcrat.png"),
-                  "head": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
+    "Plutocrat": {"suitTex": os_path_join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_pcrat.png"),
+                  "head": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
                                        "ttcc_ene_plutocrat-zero.bam"),
                   "hands": (170 / 255, 163 / 255, 153 / 255, 1),
                   "name": "ttcc_ene_plutocrat",
@@ -957,13 +960,13 @@ COG_DATA = {
                   "cog": "plutocrat",
                   "emblem": "emblem_money",
                   "hasHalloween": 1,
-                  "headTex_HW": os.path.join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_plutocrat_hw.png"),
-                  "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_pcrat_hw.png"),
+                  "headTex_HW": os_path_join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_plutocrat_hw.png"),
+                  "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_pcrat_hw.png"),
                   "handsHW": (183 / 255, 82 / 255, 30 / 255, 1)},
 
     "Charon": {"suitTex": CASHBOT_SKELE_SUIT,
                "head": SUIT_A_SKELECOG_HEAD,
-               # "headTex": os.path.join(RESOURCES_DIR,"phase_5","maps","ttcc_ene_skelecog_m.png"),
+               # "headTex": os_path_join(RESOURCES_DIR,"phase_5","maps","ttcc_ene_skelecog_m.png"),
                "bodyColor": (135 / 255, 129 / 255, 121 / 255, 1),
                "hands": (66 / 255, 63 / 255, 58 / 255, 1),
                "name": "suitA_skeleton_skull",
@@ -975,7 +978,7 @@ COG_DATA = {
 
     "Nix": {"suitTex": CASHBOT_SKELE_SUIT,
             "head": SUIT_B_SKELECOG_HEAD,
-            # "headTex": os.path.join(RESOURCES_DIR,"phase_5","maps","ttcc_ene_skelecog_m.png"),
+            # "headTex": os_path_join(RESOURCES_DIR,"phase_5","maps","ttcc_ene_skelecog_m.png"),
             "bodyColor": (144 / 255, 150 / 255, 160 / 255, 1),
             "hands": (71 / 255, 74 / 255, 78 / 255, 1),
             "name": "suitB_skeleton_skull",
@@ -987,7 +990,7 @@ COG_DATA = {
 
     "Hydra": {"suitTex": CASHBOT_SKELE_SUIT,
               "head": SUIT_C_SKELECOG_HEAD,
-              # "headTex": os.path.join(RESOURCES_DIR,"phase_5","maps","ttcc_ene_skelecog_m.png"),
+              # "headTex": os_path_join(RESOURCES_DIR,"phase_5","maps","ttcc_ene_skelecog_m.png"),
               "bodyColor": (156 / 255, 181 / 255, 186 / 255, 1),
               "hands": (77 / 255, 89 / 255, 91 / 255, 1),
               "name": "suitC_skeleton_skull",
@@ -999,7 +1002,7 @@ COG_DATA = {
 
     "Styx": {"suitTex": CASHBOT_SKELE_SUIT,
              "head": SUIT_C_SKELECOG_HEAD,
-             # "headTex": os.path.join(RESOURCES_DIR,"phase_5","maps","ttcc_ene_skelecog_m.png"),
+             # "headTex": os_path_join(RESOURCES_DIR,"phase_5","maps","ttcc_ene_skelecog_m.png"),
              "bodyColor": (191 / 255, 191 / 255, 191 / 255, 1),
              "hands": (92 / 255, 92 / 255, 91 / 255, 1),
              "name": "suitC_skeleton_skull",
@@ -1011,7 +1014,7 @@ COG_DATA = {
 
     "Kerberos": {"suitTex": CASHBOT_SKELE_SUIT,
                  "head": SUIT_A_SKELECOG_HEAD,
-                 # "headTex": os.path.join(RESOURCES_DIR,"phase_5","maps","ttcc_ene_skelecog_m.png"),
+                 # "headTex": os_path_join(RESOURCES_DIR,"phase_5","maps","ttcc_ene_skelecog_m.png"),
                  "bodyColor": (166 / 255, 191 / 255, 166 / 255, 1),
                  "hands": (82 / 255, 94 / 255, 81 / 255, 1),
                  "name": "suitA_skeleton_skull",
@@ -1022,7 +1025,7 @@ COG_DATA = {
                  "emblem": "emblem_money"},
 
     "High Roller": {"suitTex": HIGH_ROLLER_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+                    "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                          "cc_m_chr_ene_highroller-zero.bam"),
                     "headSize": 1.17045,
                     "hands": (1, 1, 1, 1),
@@ -1034,8 +1037,8 @@ COG_DATA = {
                     "suitToggle": "hr",
                     "emblem": "emblem_money"},
 
-    "Count Erfit": {"suitTex": os.path.join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_erfit.png"),
-                    "head": os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
+    "Count Erfit": {"suitTex": os_path_join(RESOURCES_DIR, "phase_10", "maps", "ttcc_ene_suittex_erfit.png"),
+                    "head": os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "suits",
                                          "ttcc_ene_counterfit-zero.bam"),
                     "name": "ttcc_ene_counterfit",
                     "hands": (242 / 255, 255 / 255, 242 / 255, 1),
@@ -1080,7 +1083,7 @@ COG_DATA = {
 
     # *******************   LAWBOTS **********************************
     "Bottom Feeder": {"suitTex": LAWBOT_SUIT,
-                      "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                      "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                            "ttcc_ene_bottom_feeder-zero.bam"),
                       "hands": (191 / 255, 191 / 255, 242 / 255, 1),
                       "name": "ttcc_ene_bottom_feeder",
@@ -1092,7 +1095,7 @@ COG_DATA = {
                       "emblem": "emblem_legal"},
 
     "Bloodsucker": {"suitTex": LAWBOT_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                    "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                          "ttcc_ene_bloodsucker-zero.bam"),
                     "hands": (242 / 255, 242 / 255, 1, 1),
                     "name": "ttcc_ene_bloodsucker",
@@ -1104,7 +1107,7 @@ COG_DATA = {
                     "emblem": "emblem_legal"},
 
     "Pettifogger": {"suitTex": LAWBOT_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                    "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                          "ttcc_ene_pettifogger-zero.bam"),
                     "hands": (191 / 255, 191 / 255, 242 / 255, 1),
                     "name": "ttcc_ene_pettifogger",
@@ -1116,7 +1119,7 @@ COG_DATA = {
                     "emblem": "emblem_legal"},
 
     "Double Talker": {"suitTex": LAWBOT_SUIT,
-                      "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                      "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                            "ttcc_ene_doubletalker-zero.bam"),
                       "hands": (191 / 255, 191 / 255, 242 / 255, 1),
                       "name": "ttcc_ene_doubletalker",
@@ -1128,7 +1131,7 @@ COG_DATA = {
                       "emblem": "emblem_legal"},
 
     "Needlenose": {"suitTex": LAWBOT_SUIT,
-                   "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                   "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                         "ttcc_ene_needlenose-zero.bam"),
                    "hands": (97 / 255, 116 / 255, 182 / 255, 1),
                    "name": "ttcc_ene_needlenose",
@@ -1140,7 +1143,7 @@ COG_DATA = {
                    "emblem": "emblem_legal"},
 
     "Ambulance Chaser": {"suitTex": LAWBOT_SUIT,
-                         "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                         "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                               "ttcc_ene_ambulance_chaser-zero.bam"),
                          "hands": (191 / 255, 191 / 255, 242 / 255, 1),
                          "name": "ttcc_ene_ambulance_chaser",
@@ -1152,9 +1155,9 @@ COG_DATA = {
                          "emblem": "emblem_legal"},
 
     "Conveyancer": {"suitTex": LAWBOT_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                    "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                          "ttcc_ene_conveyancer-zero.bam"),
-                    "belt": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                    "belt": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                          "ttcc_ene_conveyancer_belt.bam"),
                     "hands": (109 / 255, 113 / 255, 143 / 255, 1),
                     "name": "ttcc_ene_conveyancer",
@@ -1166,7 +1169,7 @@ COG_DATA = {
                     "emblem": "emblem_legal"},
 
     "Back Stabber": {"suitTex": LAWBOT_SUIT,
-                     "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                     "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                           "ttcc_ene_backstabber-zero.bam"),
                      "hands": (143 / 255, 132 / 255, 188 / 255, 1),
                      "name": "ttcc_ene_backstabber",
@@ -1178,7 +1181,7 @@ COG_DATA = {
                      "emblem": "emblem_legal"},
 
     "Advocate": {"suitTex": LAWBOT_SUIT,
-                 "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                 "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                       "ttcc_ene_advocate-zero.bam"),
                  "hands": (25 / 255, 25 / 255, 38 / 255, 1),
                  "name": "ttcc_ene_advocate",
@@ -1190,7 +1193,7 @@ COG_DATA = {
                  "emblem": "emblem_legal"},
 
     "Spin Doctor": {"suitTex": LAWBOT_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                    "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                          "ttcc_ene_spin_doctor-zero.bam"),
                     "hands": (146 / 255, 212 / 255, 183 / 255, 1),
                     "name": "ttcc_ene_spin_doctor",
@@ -1202,7 +1205,7 @@ COG_DATA = {
                     "emblem": "emblem_legal"},
 
     "Shyster": {"suitTex": LAWBOT_SUIT,
-                "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits", "ttcc_ene_shyster-zero.bam"),
+                "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits", "ttcc_ene_shyster-zero.bam"),
                 "hands": (191 / 255, 191 / 255, 242 / 255, 1),
                 "name": "ttcc_ene_shyster",
                 "scale": 1.0761278526833575077252948224759,
@@ -1213,7 +1216,7 @@ COG_DATA = {
                 "emblem": "emblem_legal"},
 
     "Legal Eagle": {"suitTex": LAWBOT_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                    "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                          "ttcc_ene_legal_eagle-zero.bam"),
                     "hands": (180 / 255, 176 / 255, 218 / 255, 1),
                     "name": "ttcc_ene_legal_eagle",
@@ -1225,7 +1228,7 @@ COG_DATA = {
                     "emblem": "emblem_legal"},
 
     "Barrister": {"suitTex": LAWBOT_SUIT,
-                  "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                  "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                        "ttcc_ene_barrister-zero.bam"),
                   "hands": (242 / 255, 242 / 255, 1, 1),
                   "name": "ttcc_ene_barrister",
@@ -1237,7 +1240,7 @@ COG_DATA = {
                   "emblem": "emblem_legal"},
 
     "Big Wig": {"suitTex": LAWBOT_SUIT,
-                "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits", "ttcc_ene_bigwig-zero.bam"),
+                "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits", "ttcc_ene_bigwig-zero.bam"),
                 "hands": (191 / 255, 191 / 255, 242 / 255, 1),
                 "name": "ttcc_ene_bigwig",
                 "scale": 1.15511,
@@ -1258,8 +1261,8 @@ COG_DATA = {
                       "suit": "bs",
                       "emblem": "emblem_legal"},
 
-    "Mouthpiece": {"suitTex": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_mouthp.png"),
-                   "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+    "Mouthpiece": {"suitTex": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_mouthp.png"),
+                   "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                         "ttcc_ene_mouthpiece-zero.bam"),
                    "hands": (89 / 255, 106 / 255, 130 / 255, 1),
                    "name": "ttcc_ene_mouthpiece",
@@ -1269,12 +1272,12 @@ COG_DATA = {
                    "suit": "b",
                    "emblem": "emblem_legal",
                    "hasHalloween": 1,
-                   "headTex_HW": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_mouthpiece_hw.png"),
-                   "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_mouthp_hw.png"),
+                   "headTex_HW": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_mouthpiece_hw.png"),
+                   "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_mouthp_hw.png"),
                    "handsHW": (213 / 255, 198 / 255, 172 / 255, 1)},
 
-    "Rainmaker": {"suitTex": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_rainmake.png"),
-                  "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+    "Rainmaker": {"suitTex": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_rainmake.png"),
+                  "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                        "ttcc_ene_rainmaker-zero.bam"),
                   "hands": (161 / 255, 165 / 255, 177 / 255, 1),
                   "name": "ttcc_ene_rainmaker",
@@ -1285,15 +1288,15 @@ COG_DATA = {
                   "suitToggle": "rm",
                   "emblem": "emblem_legal",
                   "hasHalloween": 1,
-                  "headTex1": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_rainmaker.png"),
-                  "hairTex": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_rainmaker_hair.png"),
-                  "headTex_HW": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_rainmaker_hw.png"),
-                  "hairTex_HW": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_rainmaker_hair_hw.png"),
-                  "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_rainmake_hw.png"),
+                  "headTex1": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_rainmaker.png"),
+                  "hairTex": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_rainmaker_hair.png"),
+                  "headTex_HW": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_rainmaker_hw.png"),
+                  "hairTex_HW": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_rainmaker_hair_hw.png"),
+                  "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_rainmake_hw.png"),
                   "handsHW": (155 / 255, 225 / 255, 193 / 255, 1)},
 
-    "Witch Hunter": {"suitTex": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_whunter.png"),
-                     "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+    "Witch Hunter": {"suitTex": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_whunter.png"),
+                     "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                           "ttcc_ene_witchhunter-zero.bam"),
                      "headSize": 1.25,
                      "hands": (180 / 255, 176 / 255, 218 / 255, 1),
@@ -1304,13 +1307,13 @@ COG_DATA = {
                      "suit": "a",
                      "emblem": "emblem_legal",
                      "hasHalloween": 1,
-                     "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_whunter_hw.png"),
+                     "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_whunter_hw.png"),
                      "handsHW": (180 / 255, 176 / 255, 218 / 255, 1),
-                     "headModel_HW": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                     "headModel_HW": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                                   "ttcc_ene_witchhunter_hw-zero.bam")},
 
-    "Count Erclaim": {"suitTex": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_count.png"),
-                      "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+    "Count Erclaim": {"suitTex": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_count.png"),
+                      "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                            "ttcc_ene_counterclaim-zero.bam"),
                       "hands": (242 / 255, 242 / 255, 1, 1),
                       "name": "ttcc_ene_counterclaim",
@@ -1321,7 +1324,7 @@ COG_DATA = {
                       "emblem": "emblem_legal"},
 
     "Redd 'Heir' Wing": {"suitTex": LAWBOT_EXE_SUIT,
-                         "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                         "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                               "ttcc_ene_redd-zero.bam"),
                          "hands": (242 / 255, 242 / 255, 1, 1),
                          "name": "ttcc_ene_redd",
@@ -1332,7 +1335,7 @@ COG_DATA = {
                          "emblem": "emblem_legal"},
 
     "Judy": {"suitTex": LAWBOT_SUIT,
-             "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits", "ttcc_ene_judy-zero.bam"),
+             "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits", "ttcc_ene_judy-zero.bam"),
              "hands": (108 / 255, 126 / 255, 191 / 255, 1),
              "name": "ttcc_ene_judy",
              "scale": 1.0938294303797468354430379746835,
@@ -1342,7 +1345,7 @@ COG_DATA = {
              "emblem": "emblem_legal"},
 
     "Litigator": {"suitTex": LAWBOT_EXE_SUIT,
-                  "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                  "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                        "ttcc_ene_litigator-zero.bam"),
                   "hands": (99 / 255, 113 / 255, 163 / 255, 1),
                   "name": "ttcc_ene_litigator",
@@ -1352,13 +1355,13 @@ COG_DATA = {
                   "suit": "a",
                   "emblem": "emblem_legal",
                   "hasHalloween": 1,
-                  "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_lgator_hw.png"),
+                  "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_lgator_hw.png"),
                   "handsHW": (160 / 255, 117 / 255, 77 / 255, 1),
-                  "headModel_HW": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                  "headModel_HW": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                                "ttcc_ene_litigator_hw-zero.bam")},
 
     "Stenographer": {"suitTex": LAWBOT_EXE_SUIT,
-                     "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                     "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                           "ttcc_ene_stenographer-zero.bam"),
                      "hands": (91 / 255, 104 / 255, 146 / 255, 1),
                      "name": "ttcc_ene_stenographer",
@@ -1368,12 +1371,12 @@ COG_DATA = {
                      "suit": "af",
                      "emblem": "emblem_legal",
                      "hasHalloween": 1,
-                     "headTex_HW": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_stenographer_hw.png"),
-                     "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_stenog_hw.png"),
+                     "headTex_HW": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_stenographer_hw.png"),
+                     "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_stenog_hw.png"),
                      "handsHW": (101 / 255, 57 / 255, 34 / 255, 1)},
 
     "Case Manager": {"suitTex": LAWBOT_EXE_SUIT,
-                     "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                     "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                           "ttcc_ene_casemanager-zero.bam"),
                      "hands": (120 / 255, 85 / 255, 70 / 255, 1),
                      "name": "ttcc_ene_casemanager",
@@ -1383,13 +1386,13 @@ COG_DATA = {
                      "suit": "a",
                      "emblem": "emblem_legal",
                      "hasHalloween": 1,
-                     "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_caseman_hw.png"),
+                     "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_caseman_hw.png"),
                      "handsHW": (159 / 255, 159 / 255, 159 / 255, 1),
-                     "headModel_HW": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                     "headModel_HW": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                                   "ttcc_ene_casemanager_hw-zero.bam")},
 
     "Scapegoat": {"suitTex": LAWBOT_EXE_SUIT,
-                  "head": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                  "head": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                        "ttcc_ene_scapegoat-zero.bam"),
                   "hands": (76 / 255, 76 / 255, 115 / 255, 1),
                   "name": "ttcc_ene_scapegoat",
@@ -1399,9 +1402,9 @@ COG_DATA = {
                   "suit": "b",
                   "emblem": "emblem_legal",
                   "hasHalloween": 1,
-                  "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_sgoat_hw.png"),
+                  "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_11", "maps", "ttcc_ene_suittex_sgoat_hw.png"),
                   "handsHW": (189 / 255, 134 / 255, 69 / 255, 1),
-                  "headModel_HW": os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
+                  "headModel_HW": os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "suits",
                                                "ttcc_ene_scapegoat_hw-zero.bam")},
 
     "Buff Lawbot Skelecog": {"suitTex": LAWBOT_SKELE_SUIT,
@@ -1439,7 +1442,7 @@ COG_DATA = {
 
     # *******************   BOSSBOTS **********************************
     "Flunky": {"suitTex": BOSSBOT_SUIT,
-               "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits", "ttcc_ene_flunky.bam"),
+               "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits", "ttcc_ene_flunky.bam"),
                "hands": (242 / 255, 191 / 255, 191 / 255, 1),
                "name": "flunky",
                "scale": 0.96618,
@@ -1450,7 +1453,7 @@ COG_DATA = {
                "emblem": "emblem_corp"},
 
     "Pencil Pusher": {"suitTex": BOSSBOT_SUIT,
-                      "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+                      "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                            "ttcc_ene_pencilpusher.bam"),
                       "name": "pencilpusher",
                       "hands": (146 / 255, 118 / 255, 113 / 255, 1),
@@ -1462,7 +1465,7 @@ COG_DATA = {
                       "emblem": "emblem_corp"},
 
     "Yesman": {"suitTex": BOSSBOT_SUIT,
-               "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits", "ttcc_ene_yesman.bam"),
+               "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits", "ttcc_ene_yesman.bam"),
                "hands": (210 / 255, 214 / 255, 213 / 255, 1),
                "name": "yesman",
                "scale": 0.68069,
@@ -1473,7 +1476,7 @@ COG_DATA = {
                "emblem": "emblem_corp"},
 
     "Micromanager": {"suitTex": BOSSBOT_SUIT,
-                     "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+                     "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                           "ttcc_ene_micromanager.bam"),
                      "hands": (242 / 255, 191 / 255, 191 / 255, 1),
                      "name": "micromanager",
@@ -1485,7 +1488,7 @@ COG_DATA = {
                      "emblem": "emblem_corp"},
 
     "Downsizer": {"suitTex": BOSSBOT_SUIT,
-                  "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits", "ttcc_ene_downsizer.bam"),
+                  "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits", "ttcc_ene_downsizer.bam"),
                   "name": "downsizer",
                   "hands": (164 / 255, 178 / 255, 168 / 255, 1),
                   "scale": 0.85066,
@@ -1496,7 +1499,7 @@ COG_DATA = {
                   "emblem": "emblem_corp"},
 
     "Head Hunter": {"suitTex": BOSSBOT_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+                    "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                          "ttcc_ene_headhunter.bam"),
                     "hands": (242 / 255, 191 / 255, 191 / 255, 1),
                     "name": "headhunter",
@@ -1508,7 +1511,7 @@ COG_DATA = {
                     "emblem": "emblem_corp"},
 
     "Corporate Raider": {"suitTex": BOSSBOT_SUIT,
-                         "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+                         "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                               "ttcc_ene_corporateraider.bam"),
                          "name": "corporateraider",
                          "hands": (202 / 255, 172 / 255, 159 / 255, 1),
@@ -1520,7 +1523,7 @@ COG_DATA = {
                          "emblem": "emblem_corp"},
 
     "Big Cheese": {"suitTex": BOSSBOT_SUIT,
-                   "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits", "ttcc_ene_bigcheese.bam"),
+                   "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits", "ttcc_ene_bigcheese.bam"),
                    "hands": (161 / 255, 204 / 255, 106 / 255, 1),
                    "name": "bigcheese",
                    "scale": 1.15511,
@@ -1531,7 +1534,7 @@ COG_DATA = {
                    "emblem": "emblem_corp"},
 
     "Autocaddie": {"suitTex": BOSSBOT_SKELE_EXE_SUIT,
-                   "hatTex": os.path.join(RESOURCES_DIR, "phase_12", "maps", "cc_t_ene_ceo.png"),
+                   "hatTex": os_path_join(RESOURCES_DIR, "phase_12", "maps", "cc_t_ene_ceo.png"),
                    "head": ("phase_12/models/char/suits/ttcc_ene_autocaddie-zero.bam"),
                    "hands": (133 / 255, 112 / 255, 86 / 255, 1),
                    "name": "suitA_skeleton_skull",
@@ -1556,7 +1559,7 @@ COG_DATA = {
                        "emblem": "emblem_corp"},
 
     "Derrick Man": {"suitTex": BOSSBOT_EXE_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+                    "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                          "ttcc_ene_derrickman-zero.bam"),
                     "headPos": -0.1,
                     "headPosY": -0.2,
@@ -1568,12 +1571,12 @@ COG_DATA = {
                     "suit": "a",
                     "emblem": "emblem_corp",
                     "hasHalloween": 1,
-                    "headTex_HW": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_derrickman_hw.png"),
-                    "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_derrman_hw.png"),
+                    "headTex_HW": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_derrickman_hw.png"),
+                    "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_derrman_hw.png"),
                     "handsHW": (175 / 255, 118 / 255, 63 / 255, 1)},
 
     "Derrick Hand": {"suitTex": BOSSBOT_EXE_SUIT,
-                     "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+                     "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                           "ttcc_ene_derrickhand-zero.bam"),
                      "hands": (90 / 255, 85 / 255, 82 / 255, 1),
                      "name": "ttcc_ene_derrickhand",
@@ -1583,12 +1586,12 @@ COG_DATA = {
                      "suit": "a",
                      "emblem": "emblem_corp",
                      "hasHalloween": 1,
-                     "headTex_HW": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_derrickhand_hw.png"),
-                     "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_derrhand_hw.png"),
+                     "headTex_HW": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_derrickhand_hw.png"),
+                     "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_derrhand_hw.png"),
                      "handsHW": (151 / 255, 96 / 255, 61 / 255, 1)},
 
     "Derrick Hand Skelecog": {"suitTex": BOSSBOT_SKELE_EXE_SUIT,
-                              "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+                              "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                                    "ttcc_ene_derrickhand_skele-zero.bam"),
                               "hands": (133 / 255, 114 / 255, 96 / 255, 1),
                               "name": "ttcc_ene_derrickhand_skele",
@@ -1599,8 +1602,8 @@ COG_DATA = {
                               "emblem": "emblem_corp",
                               "suitToggle": "dh"},
 
-    "Firestarter": {"suitTex": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_fires.png"),
-                    "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+    "Firestarter": {"suitTex": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_fires.png"),
+                    "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                          "ttcc_ene_firestarter-zero.bam"),
                     "hands": (196 / 255, 50 / 255, 14 / 255, 1),
                     "name": "ttcc_ene_firestarter",
@@ -1610,13 +1613,13 @@ COG_DATA = {
                     "suit": "a",
                     "emblem": "emblem_corp",
                     "hasHalloween": 1,
-                    "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_fires_hw.png"),
+                    "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_fires_hw.png"),
                     "handsHW": (19 / 255, 19 / 255, 19 / 255, 1),
-                    "headModel_HW": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+                    "headModel_HW": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                                  "ttcc_ene_firestarter_hw-zero.bam")},
 
-    "Featherbedder": {"suitTex": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_fbed.png"),
-                      "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+    "Featherbedder": {"suitTex": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_fbed.png"),
+                      "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                            "ttcc_ene_featherbedder-zero.bam"),
                       "headPos": -0.05,
                       "headPosY": 0.1,
@@ -1628,12 +1631,12 @@ COG_DATA = {
                       "suit": "c",
                       "emblem": "emblem_corp",
                       "hasHalloween": 1,
-                      "headTex_HW": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_featherbedder_hw.png"),
-                      "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_fbed_hw.png"),
+                      "headTex_HW": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_featherbedder_hw.png"),
+                      "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_fbed_hw.png"),
                       "handsHW": (32 / 255, 26 / 255, 39 / 255, 1)},
 
-    "Major Player": {"suitTex": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_mplayer.png"),
-                     "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+    "Major Player": {"suitTex": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_mplayer.png"),
+                     "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                           "ttcc_ene_majorplayer-zero.bam"),
                      "headPos": 0.0,
                      "headPosY": -0.2,
@@ -1646,8 +1649,8 @@ COG_DATA = {
                      "emblem": "emblem_corp"},
 
     "Major Player (Halloween)": {
-        "suitTex": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_mplayer.png"),
-        "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits", "ttcc_ene_majorplayer-zero.bam"),
+        "suitTex": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_mplayer.png"),
+        "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits", "ttcc_ene_majorplayer-zero.bam"),
         "headPos": 0.0,
         "headPosY": -0.2,
         "hands": (242 / 255, 242 / 255, 242 / 255, 1),
@@ -1658,16 +1661,16 @@ COG_DATA = {
         "suit": "mph",
         "emblem": "emblem_corp",
         "hasHalloween": 1,
-        "headTex_HW": os.path.join(RESOURCES_DIR, "phase_12", "maps",
+        "headTex_HW": os_path_join(RESOURCES_DIR, "phase_12", "maps",
                                    "ttcc_ene_majorplayer_spooky.png"),
-        "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_12", "maps",
+        "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_12", "maps",
                                    "ttcc_ene_suittex_mplayer_suit_spooky.png"),
-        "bodyTex_HW": os.path.join(RESOURCES_DIR, "phase_12", "maps",
+        "bodyTex_HW": os_path_join(RESOURCES_DIR, "phase_12", "maps",
                                    "ttcc_ene_suittex_mplayer_body_spooky.png"),
         "handsHW": (242 / 255, 242 / 255, 242 / 255, 1)},
 
-    "Chainsaw Consultant": {"suitTex": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_chainsaw.png"),
-                            "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
+    "Chainsaw Consultant": {"suitTex": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_chainsaw.png"),
+                            "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits",
                                                  "ttcc_ene_chainsaw-zero.bam"),
                             "headSize": 0.9757,
                             "hands": (75 / 255, 74 / 255, 76 / 255, 1),
@@ -1680,9 +1683,9 @@ COG_DATA = {
                             "emblem": "emblem_corp"},
 
     "Chainsaw Consultant (Halloween)": {
-        "suitTex": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_chainsaw_hw.png"),
-        "head": os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "suits", "ttcc_ene_chainsaw-zero.bam"),
-        "headTex": os.path.join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_chainsaw.png"),
+        "suitTex": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_suittex_chainsaw_hw.png"),
+        "head": os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "suits", "ttcc_ene_chainsaw-zero.bam"),
+        "headTex": os_path_join(RESOURCES_DIR, "phase_12", "maps", "ttcc_ene_chainsaw.png"),
         "headSize": 0.9757,
         "hands": (75 / 255, 74 / 255, 76 / 255, 1),
         "name": "ttcc_ene_chainsaw",
@@ -1728,7 +1731,7 @@ COG_DATA = {
 
     # *******************   BOARDBOTS **********************************
     "Bagholder": {"suitTex": BOARDBOT_SUIT,
-                  "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
+                  "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
                                        "cc_a_ene_bagholder-zero.bam"),
                   "headPos": 0.60,
                   "hands": (116 / 255, 161 / 255, 166 / 255, 1),
@@ -1741,7 +1744,7 @@ COG_DATA = {
                   "emblem": "emblem_board"},
 
     "Paper Hands": {"suitTex": BOARDBOT_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
+                    "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
                                          "cc_a_ene_paperhands-zero.bam"),
                     "headSize": 0.7,
                     "headPos": -0.1,
@@ -1755,7 +1758,7 @@ COG_DATA = {
                     "emblem": "emblem_board"},
 
     "Insider": {"suitTex": INSIDER_SUIT,
-                "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits", "cc_a_ene_insider-zero.bam"),
+                "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits", "cc_a_ene_insider-zero.bam"),
                 "hands": (16 / 255, 17 / 255, 24 / 255, 1),
                 "name": "cc_a_ene_insider",
                 "scale": 0.81378154205607476635514018691589,
@@ -1766,7 +1769,7 @@ COG_DATA = {
                 "emblem": "emblem_board"},
 
     "Circuit Breaker": {"suitTex": BOARDBOT_SUIT,
-                        "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
+                        "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
                                              "cc_a_ene_circuitbreaker-zero.bam"),
                         "hands": (97 / 255, 107 / 255, 106 / 255, 1),
                         "name": "cc_a_ene_circuitbreaker",
@@ -1778,7 +1781,7 @@ COG_DATA = {
                         "emblem": "emblem_board"},
 
     "Deadlock": {"suitTex": BOARDBOT_SUIT,
-                 "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
+                 "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
                                       "cc_a_ene_deadlock-zero.bam"),
                  "headPos": -0.05,
                  "hands": (104 / 255, 131 / 255, 135 / 255, 1),
@@ -1791,7 +1794,7 @@ COG_DATA = {
                  "emblem": "emblem_board"},
 
     "Shark Watcher": {"suitTex": BOARDBOT_SUIT,
-                      "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
+                      "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
                                            "cc_a_ene_sharkwatcher-zero.bam"),
                       "hands": (84 / 255, 123 / 255, 128 / 255, 1),
                       "name": "cc_a_ene_sharkwatcher",
@@ -1803,7 +1806,7 @@ COG_DATA = {
                       "emblem": "emblem_board"},
 
     "Magnate": {"suitTex": BOARDBOT_SUIT,
-                "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits", "cc_a_ene_magnate-zero.bam"),
+                "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits", "cc_a_ene_magnate-zero.bam"),
                 "headPos": -0.1,
                 "hands": (48 / 255, 48 / 255, 48 / 255, 1),
                 "name": "cc_a_ene_magnate",
@@ -1815,7 +1818,7 @@ COG_DATA = {
                 "emblem": "emblem_board"},
 
     "Head Honcho": {"suitTex": BOARDBOT_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
+                    "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
                                          "cc_a_ene_headhoncho-zero.bam"),
                     "hands": (84 / 255, 84 / 255, 84 / 255, 1),
                     "name": "cc_a_ene_headhoncho",
@@ -1827,7 +1830,7 @@ COG_DATA = {
                     "emblem": "emblem_board"},
 
     "L.A.A.": {"suitTex": BOARDBOT_EXE_SUIT,
-               "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits", "ttcc_ene_dola-zero.bam"),
+               "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits", "ttcc_ene_dola-zero.bam"),
                "hands": (144 / 255, 129 / 255, 118 / 255, 1),
                "name": "ttcc_ene_dola",
                "scale": 1.2778919954653348405260342455557,
@@ -1836,12 +1839,12 @@ COG_DATA = {
                "suit": "b",
                "emblem": "emblem_board",
                "hasHalloween": 1,
-               "headTex_HW": os.path.join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_dola_hw.png"),
-               "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_suittex_dlao_hw.png"),
+               "headTex_HW": os_path_join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_dola_hw.png"),
+               "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_suittex_dlao_hw.png"),
                "handsHW": (144 / 255, 129 / 255, 118 / 255, 1)},
 
     "D.O.L.D.": {"suitTex": BOARDBOT_EXE_SUIT,
-                 "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits", "ttcc_ene_dold-zero.bam"),
+                 "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits", "ttcc_ene_dold-zero.bam"),
                  "hands": (231 / 255, 94 / 255, 16 / 255, 1),
                  "name": "ttcc_ene_dold",
                  "scale": 1.2359416252821670428893905191874,
@@ -1850,12 +1853,12 @@ COG_DATA = {
                  "suit": "a",
                  "emblem": "emblem_board",
                  "hasHalloween": 1,
-                 "headTex_HW": os.path.join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_dold_hw.png"),
-                 "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_suittex_dold_hw.png"),
+                 "headTex_HW": os_path_join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_dold_hw.png"),
+                 "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_suittex_dold_hw.png"),
                  "handsHW": (57 / 255, 19 / 255, 5 / 255, 1)},
 
-    "Deep Diver": {"suitTex": os.path.join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_suittex_ddiver.png"),
-                   "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
+    "Deep Diver": {"suitTex": os_path_join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_suittex_ddiver.png"),
+                   "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
                                         "ttcc_ene_deepdiver-zero.bam"),
                    "headPos": 0.1,
                    # "headPosY": 0.01,
@@ -1867,13 +1870,13 @@ COG_DATA = {
                    "suit": "c",
                    "emblem": "emblem_board",
                    "hasHalloween": 1,
-                   "headModel_HW": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
+                   "headModel_HW": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
                                                 "ttcc_ene_deepdiver_hw-zero.bam"),
-                   "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_suittex_ddiver_hw.png"),
+                   "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_suittex_ddiver_hw.png"),
                    "handsHW": (80 / 255, 138 / 255, 85 / 255, 1)},
 
-    "Gatekeeper": {"suitTex": os.path.join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_suittex_gatekeep.png"),
-                   "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
+    "Gatekeeper": {"suitTex": os_path_join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_suittex_gatekeep.png"),
+                   "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
                                         "ttcc_ene_gatekeeper-zero.bam"),
                    "headPos": 0.1,
                    "hands": (88 / 255, 88 / 255, 88 / 255, 1),
@@ -1884,12 +1887,12 @@ COG_DATA = {
                    "suit": "a",
                    "emblem": "emblem_board",
                    "hasHalloween": 1,
-                   "headTex_HW": os.path.join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_gatekeeper_hw.png"),
-                   "suitTex_HW": os.path.join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_suittex_gatekeep_hw.png"),
+                   "headTex_HW": os_path_join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_gatekeeper_hw.png"),
+                   "suitTex_HW": os_path_join(RESOURCES_DIR, "phase_14", "maps", "ttcc_ene_suittex_gatekeep_hw.png"),
                    "handsHW": (55 / 255, 77 / 255, 70 / 255, 1)},
 
     "Ottoman": {"suitTex": BOARDBOT_SUIT,
-                "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits", "ttcc_ene_ottoman-zero.bam"),
+                "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits", "ttcc_ene_ottoman-zero.bam"),
                 "headPos": -0.15,
                 "hands": (54 / 255, 44 / 255, 37 / 255, 1),
                 "name": "ttcc_ene_ottoman",
@@ -1900,7 +1903,7 @@ COG_DATA = {
                 "emblem": "emblem_board"},
 
     "Chairman": {"suitTex": BOARDBOT_SUIT,
-                 "head": os.path.join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
+                 "head": os_path_join(RESOURCES_DIR, "phase_14", "models", "char", "suits",
                                       "ttcc_ene_chairman-zero.bam"),
                  "headPos": -0.12,
                  "hands": (84 / 255, 78 / 255, 69 / 255, 1),
@@ -1945,9 +1948,9 @@ COG_DATA = {
                        "emblem": "emblem_board"},
 
     "Desk Jockey": {"suitTex": DESK_SUIT,
-                    "head": os.path.join(RESOURCES_DIR, "phase_3.5", "models", "schoolhouse", "dummy",
+                    "head": os_path_join(RESOURCES_DIR, "phase_3.5", "models", "schoolhouse", "dummy",
                                          "ttcc_ene_dummy-zero.bam"),
-                    "headTex": os.path.join(RESOURCES_DIR, "phase_3.5", "maps", "schoolhouse", "dummy",
+                    "headTex": os_path_join(RESOURCES_DIR, "phase_3.5", "maps", "schoolhouse", "dummy",
                                             "ttcc_ene_djockey.png"),
                     "hands": (242 / 255, 242 / 255, 242 / 255, 1),
                     "name": "ttcc_ene_dummy",
@@ -1959,7 +1962,7 @@ COG_DATA = {
                     "emblem": "emblem_corp"},
 
     "Goon": {"suitTex": SELLBOT_SUIT,
-             "head": os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "Cog_Goonie-zero.bam"),
+             "head": os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "Cog_Goonie-zero.bam"),
              "name": "Cog_Goonie",
              "hands": (84 / 255, 84 / 255, 84 / 255, 1),
              "scale": 1.0000,
@@ -1982,7 +1985,7 @@ COG_DATA = {
             "torso": VP_TORSO_ANIM_DICT,
             "head": VP_HEAD_ANIM_DICT
         },
-        "texture": os.path.join(RESOURCES_DIR, "phase_9", "maps", "cc_t_ene_boss_s.png"),
+        "texture": os_path_join(RESOURCES_DIR, "phase_9", "maps", "cc_t_ene_boss_s.png"),
         "scale": 1.0,
         "name": "VP",
         "cog": "VP",
@@ -2002,7 +2005,7 @@ COG_DATA = {
             "torso": VP_TORSO_ANIM_DICT,
             "head": CFO_HEAD_ANIM_DICT
         },
-        "texture": os.path.join(RESOURCES_DIR, "phase_9", "maps", "cc_t_ene_boss_m.png"),
+        "texture": os_path_join(RESOURCES_DIR, "phase_9", "maps", "cc_t_ene_boss_m.png"),
         "scale": 1.0,
         "name": "CFO",
         "cog": "CFO",
@@ -2023,7 +2026,7 @@ COG_DATA = {
             "torso": VP_TORSO_ANIM_DICT,
             "head": CLO_HEAD_ANIM_DICT
         },
-        # "texture": os.path.join(RESOURCES_DIR, "phase_11", "maps", "lawbotBoss.png"),
+        # "texture": os_path_join(RESOURCES_DIR, "phase_11", "maps", "lawbotBoss.png"),
         "scale": 1.0,
         "name": "CLO",
         "cog": "CLO",
@@ -2044,7 +2047,7 @@ COG_DATA = {
             "torso": VP_TORSO_ANIM_DICT,
             "head": CEO_HEAD_ANIM_DICT
         },  # Populate
-        "texture": os.path.join(RESOURCES_DIR, "phase_9", "maps", "cc_t_ene_boss_g.png"),
+        "texture": os_path_join(RESOURCES_DIR, "phase_9", "maps", "cc_t_ene_boss_g.png"),
         "scale": 1.0,
         "name": "CEO",
         "cog": "CEO",

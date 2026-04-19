@@ -5,6 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "crossfiledialog>=1.1.0",
     "panda3d>=1.10.16",
     "pmw>=2.1.1",
+    "pywin32>=311 ; sys_platform == 'win32'",
 ]

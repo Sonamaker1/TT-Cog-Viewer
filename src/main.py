@@ -1,3 +1,4 @@
+import re
 import os
 import tkinter as tk
 from tkinter import ttk, filedialog, PhotoImage
@@ -14,15 +15,64 @@ from panda3d.core import TextureAttrib, TextureStage
 import glob
 import src.globals as globals
 from tkinter.colorchooser import askcolor
+from panda3d.core import VirtualFileSystem, Filename
+from panda3d.core import get_model_path
+import crossfiledialog    
 
 # i view da cog
 # --- Load Config and Resources ---
 loadPrcFile(globals.CONFIG_DIR)
 
 resources = globals.RESOURCES_DIR
-if not os.path.exists(resources):
-    os.makedirs(resources)
-    print("Please input Corporate Clash extracted phase files!")
+
+vfs = VirtualFileSystem.getGlobalPtr()
+# Mount 'my_assets.mf' to the root of the VFS
+mount_path = "resources/" 
+
+def winPathToLinux(input: str | None):
+    return re.sub(r'^(.*?):\\', lambda m: "/"+m.group(1).lower()+"/", input).replace("\\", "/")
+
+base_path = os.path.expandvars(r'%LOCALAPPDATA%')
+
+name = os.path.join(base_path, "Corporate Clash", "resources", "default")  
+if os.path.exists(name):
+    folder = crossfiledialog.choose_folder(
+        title="choose folder with multifiles",
+        start_dir=name
+    )
+else:
+    folder = crossfiledialog.choose_folder(
+        title="choose folder with multifiles",
+    )
+def processMultifiles(files , folder=""):
+    get_model_path().append_directory("resources/")
+
+
+    #filename = crossfiledialog.open_file("choose a multifile", ".", "*.mf")
+    if files is not None:
+        for filename in files:
+            new_text = winPathToLinux(folder+filename)
+            if vfs.mount(Filename(new_text), Filename(mount_path), vfs.MFReadOnly):
+                #default_extension = new_text.rsplit('/', 1)[1]
+                print(f"Mounted my_assets.mf to {mount_path} successfully.")
+            else:
+                print(f"Failed to mount multifile located at {new_text}")
+    if files == []:
+        print("Failed to mount multifiles (too many selected)")
+        #default_extension= "Error: use folder picker" if folder == "" else "Unknown Error"
+        
+if folder is not None:
+    py_files = [f for f in os.listdir(folder) if f.endswith(".mf")]
+    processMultifiles(py_files, folder+"/") #don't worry too much, forward slashes will be normalized later
+
+directory = vfs.scanDirectory("resources/")
+if directory:
+    for file in directory:
+        print(str(file.getFilename()))
+            
+#if not os.path.exists(resources):
+#    os.makedirs(resources)
+#    print("Please input Corporate Clash extracted phase files!")
 
 
 class ControlPanel(tk.Frame):
