@@ -12,7 +12,7 @@ from direct.task import Task
 from direct.interval.IntervalGlobal import Func
 from panda3d.core import TextureAttrib, TextureStage
 import glob
-import globals
+import src.globals as globals
 from tkinter.colorchooser import askcolor
 
 # i view da cog
@@ -108,12 +108,12 @@ class ControlPanel(tk.Frame):
             "Misc": globals.MISC
         }
         self.DEPT_ICONS = {
-            "Sellbots": PhotoImage(file="../resources/ICONS/icon_sellbot.png"),
-            "Cashbots": PhotoImage(file="../resources/ICONS/icon_cashbot.png"),
-            "Lawbots": PhotoImage(file="../resources/ICONS/icon_lawbot.png"),
-            "Bossbots": PhotoImage(file="../resources/ICONS/icon_bossbot.png"),
-            "Boardbots": PhotoImage(file="../resources/ICONS/icon_boardbot.png"),
-            "Misc": PhotoImage(file="../resources/ICONS/icon_misc.png")
+            "Sellbots": PhotoImage(file="resources/ICONS/icon_sellbot.png"),
+            "Cashbots": PhotoImage(file="resources/ICONS/icon_cashbot.png"),
+            "Lawbots": PhotoImage(file="resources/ICONS/icon_lawbot.png"),
+            "Bossbots": PhotoImage(file="resources/ICONS/icon_bossbot.png"),
+            "Boardbots": PhotoImage(file="resources/ICONS/icon_boardbot.png"),
+            "Misc": PhotoImage(file="resources/ICONS/icon_misc.png")
         }
         for dept_name, dept_data in COG_DEPARTMENTS.items():
             frame = self._create_scrollable_radio_list(cog_notebook, dept_name, dept_data, self.selected_cog_var,
@@ -3676,7 +3676,7 @@ class CogViewer(ShowBase):
 
         return defaults
 
-
-app = CogViewer()
-app.render.setAntialias(AntialiasAttrib.MMultisample)
-app.run()
+def __main__():
+    app = CogViewer()
+    app.render.setAntialias(AntialiasAttrib.MMultisample)
+    app.run()

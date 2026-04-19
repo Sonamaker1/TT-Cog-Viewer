@@ -1,0 +1,10 @@
+[project]
+name = "tt-cog-viewer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "panda3d>=1.10.16",
+    "pmw>=2.1.1",
+]
