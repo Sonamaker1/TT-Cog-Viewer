@@ -2,6 +2,52 @@ import os
 import glob
 from direct.gui.DirectGui import DirectSlider
 from direct.gui.OnscreenText import OnscreenText
+from panda3d.core import VirtualFileSystem, Filename
+import re
+import crossfiledialog 
+from panda3d.core import get_model_path
+  
+vfs = VirtualFileSystem.getGlobalPtr()
+# Mount 'my_assets.mf' to the root of the VFS
+mount_path = "resources/" 
+
+def winPathToLinux(input: str | None):
+    return re.sub(r'^(.*?):\\', lambda m: "/"+m.group(1).lower()+"/", input).replace("\\", "/")
+
+base_path = os.path.expandvars(r'%LOCALAPPDATA%')
+
+name = os.path.join(base_path, "Corporate Clash", "resources", "default")  
+if os.path.exists(name):
+    folder = crossfiledialog.choose_folder(
+        title="choose folder with multifiles",
+        start_dir=name
+    )
+else:
+    folder = crossfiledialog.choose_folder(
+        title="choose folder with multifiles",
+    )
+def processMultifiles(files , folder=""):
+    get_model_path().append_directory("resources/")
+
+
+    #filename = crossfiledialog.open_file("choose a multifile", ".", "*.mf")
+    if files is not None:
+        for filename in files:
+            new_text = winPathToLinux(folder+filename)
+            if vfs.mount(Filename(new_text), Filename(mount_path), vfs.MFReadOnly):
+                #default_extension = new_text.rsplit('/', 1)[1]
+                print(f"Mounted my_assets.mf to {mount_path} successfully.")
+            else:
+                print(f"Failed to mount multifile located at {new_text}")
+    if files == []:
+        print("Failed to mount multifiles (too many selected)")
+        #default_extension= "Error: use folder picker" if folder == "" else "Unknown Error"
+        
+if folder is not None:
+    py_files = [f for f in os.listdir(folder) if f.endswith(".mf")]
+    processMultifiles(py_files, folder+"/") #don't worry too much, forward slashes will be normalized later
+
+directory = vfs.scanDirectory("resources/")
 
 DEFAULT_POS = (0, 0, 0)
 DEFAULT_HPR = (180, 0, 0)
@@ -255,6 +301,30 @@ if os.path.exists(rose_path):
     all_file_paths.extend(glob.glob(search_pattern, recursive=True))
 
 file_path_map = {}
+
+    
+def getVFStree(path):
+    directory = vfs.scanDirectory(path)
+    
+    if directory:
+        for file in directory:
+            file_path = str(file.getFilename())
+            file_name = os.path.basename(file_path)
+        
+            if any(file_name.startswith(p) for p in EXCLUDE_PREFIXES):
+                continue
+            if any(file_name.endswith(s) for s in EXCLUDE_SUFFIXES):
+                continue
+                
+            if file.isDirectory():
+                getVFStree(file_path)
+            else:
+                basename_no_ext = file_name[:-4]
+                file_path_map[basename_no_ext] = file_path
+
+getVFStree("resources/")
+
+print(file_path_map)
 
 for file_path in all_file_paths:
     file_name = os.path.basename(file_path)
