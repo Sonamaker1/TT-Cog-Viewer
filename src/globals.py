@@ -105,6 +105,8 @@ def getVFStree(path):
                     continue
                 if any(file_name.endswith(s) for s in EXCLUDE_SUFFIXES):
                     continue
+                if not file_name.endswith("bam"):
+                    continue
                 file_path_map[basename_no_ext] = str(relative_path)
                 
 PHASES = ["3", "3.5", "4", "5", "5.5", "6", "7", "8", "9", "10", "11", "12", "13", "14"]
