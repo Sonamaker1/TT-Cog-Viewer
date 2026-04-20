@@ -9,6 +9,7 @@ import re
 import crossfiledialog 
 from panda3d.core import get_model_path
 import fnmatch
+from src.ttrCogs import TTR_COG_DATA, TTR_SUIT_MODEL_DICT, TTR_SUIT_MODEL_NAMES
 
 vfs = VirtualFileSystem.getGlobalPtr()
 # Mount 'my_assets.mf' to the root of the VFS
@@ -227,9 +228,11 @@ SUIT_MODEL_DICT = {
     "cf": SUIT_C_FEMALE_MODEL,
     "as": SUIT_A_SKELECOG_MODEL,
     "bs": SUIT_B_SKELECOG_MODEL,
-    "cs": SUIT_C_SKELECOG_MODEL,
-    "boss": BOSS_COG_MODEL
+    "cs": SUIT_C_SKELECOG_MODEL
 }
+
+SUIT_MODEL_DICT|= TTR_SUIT_MODEL_DICT
+SUIT_MODEL_DICT|= {"boss": BOSS_COG_MODEL}
 
 SUIT_MODEL_NAMES = {
     "a": "Buff",
@@ -248,8 +251,10 @@ SUIT_MODEL_NAMES = {
     "as": "Buff (Skelecog)",
     "bs": "Thin (Skelecog)",
     "cs": "Fat (Skelecog)",
-    "boss": "Boss Cog"
 }
+
+SUIT_MODEL_NAMES|= TTR_SUIT_MODEL_NAMES
+SUIT_MODEL_NAMES|= {"boss": "Boss Cog"}
 
 # ***************** SHADOWS ***************
 SHADOW_MODEL = os_path_join(RESOURCES_DIR, "phase_3", "models", "props", "drop_shadow.bam")
@@ -2155,6 +2160,8 @@ COG_DATA = {
     }
 
 }
+
+COG_DATA |= TTR_COG_DATA #adds the TTR cogs
 
 KEYS_LIST = list(COG_DATA.keys())
 for to_verify in KEYS_LIST:

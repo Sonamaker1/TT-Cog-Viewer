@@ -1793,7 +1793,6 @@ class CogViewer(ShowBase):
         cog_data = globals.COG_DATA[self.current_cog]
         self.cog_data = cog_data
         dept = cog_data["dept"]
-
         self.clear_pie_splats()
 
         if suit_type == None:
@@ -1809,12 +1808,14 @@ class CogViewer(ShowBase):
         try:
             tx_suit = loader.loadTexture(cog_data["suitTex"])
             if suit_type in ["erfit"] or cog_data['name'] in ["ttcc_ene_counterfit"]:
-                self.actor.find('**/body').setTexture(tx_suit, 1)
+                if not self.actor.find('**/body').isEmpty():
+                    self.actor.find('**/body').setTexture(tx_suit, 1)
             else:
-                self.actor.find('**/body').setTexture(tx_suit, 1)
-                self.actor.find('**/necktie-s').setTexture(tx_suit, 1)
-                self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
-                self.actor.find('**/bowtie').setTexture(tx_suit, 1)
+                if not self.actor.find('**/body').isEmpty():
+                    self.actor.find('**/body').setTexture(tx_suit, 1)
+                    self.actor.find('**/necktie-s').setTexture(tx_suit, 1)
+                    self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
+                    self.actor.find('**/bowtie').setTexture(tx_suit, 1)
 
             # Fix for Bellringer & Insider, set their hand textures
             if suit_type == "bc":
@@ -1916,7 +1917,8 @@ class CogViewer(ShowBase):
         else:
             try:
                 self.head = loader.loadModel(head_path)
-                self.head.reparentTo(self.actor.find('**/joint_head'))
+                if not self.actor.find('**/joint_head').isEmpty():
+                    self.head.reparentTo(self.actor.find('**/joint_head'))
             except OSError:
                 self.head = loader.loadModel(globals.SHADOW_MODEL)
 
@@ -2060,7 +2062,8 @@ class CogViewer(ShowBase):
             self.available_animations = globals.BOSS_COG_ANIMATIONS
         try:
             self.actor = Actor(body_path, body_animations)
-            self.shadow.reparentTo(self.actor.find('**/joint_shadow'))
+            if not self.actor.find('**/joint_shadow').isEmpty():
+                self.shadow.reparentTo(self.actor.find('**/joint_shadow'))
         except IOError:
             self.actor = Actor(globals.SHADOW_MODEL)
         
@@ -2146,11 +2149,12 @@ class CogViewer(ShowBase):
         # Apply the texture
         tex_to_apply = tex_list[tex_index]
         tx_suit = loader.loadTexture(tex_to_apply)
-        self.actor.find('**/body').setTexture(tx_suit, 1)
-        if not_erfit:
-            self.actor.find('**/necktie-s').setTexture(tx_suit, 1)
-            self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
-            self.actor.find('**/bowtie').setTexture(tx_suit, 1)
+        if not self.actor.find('**/body').isEmpty():
+            self.actor.find('**/body').setTexture(tx_suit, 1)
+            if not_erfit:
+                self.actor.find('**/necktie-s').setTexture(tx_suit, 1)
+                self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
+                self.actor.find('**/bowtie').setTexture(tx_suit, 1)
 
         if not is_skelecog:
             self.store_suit_texture = tex_to_apply
@@ -2192,13 +2196,14 @@ class CogViewer(ShowBase):
                 self.it = (self.it + 1) % len(suit_paths)
             tx_suit = loader.loadTexture(suit_paths[self.it])
             tx_head = loader.loadTexture(head_paths[self.it])
-            self.actor.find('**/body').setTexture(tx_suit, 1)
-            self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
-            self.head.setTexture(tx_head, 1)
-            if self.it > 1:
-                self.head.find('**/bulbLeft').hide()
-            else:
-                self.head.find('**/bulbLeft').show()
+            if not self.actor.find('**/body').isEmpty():
+                self.actor.find('**/body').setTexture(tx_suit, 1)
+                self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
+                self.head.setTexture(tx_head, 1)
+                if self.it > 1:
+                    self.head.find('**/bulbLeft').hide()
+                else:
+                    self.head.find('**/bulbLeft').show()
 
         # Chainsaw Consultant (Halloween)
         elif suitToggle == "cch":
@@ -2231,10 +2236,11 @@ class CogViewer(ShowBase):
                 self.it = (self.it + 1) % len(suit_paths)
             tx_suit = loader.loadTexture(suit_paths[self.it])
             tx_body = loader.loadTexture(body_paths[self.it])
-            self.actor.find('**/body').setTexture(tx_suit, 1)
-            # check if the suit has the high roller model
-            if self.suit_type in ["hr"]:
-                self.actor.find('**/highroller_body').setTexture(tx_body, 1)
+            if not self.actor.find('**/body').isEmpty():
+                self.actor.find('**/body').setTexture(tx_suit, 1)
+                # check if the suit has the high roller model
+                if self.suit_type in ["hr"]:
+                    self.actor.find('**/highroller_body').setTexture(tx_body, 1)
             self.store_suit_texture = suit_paths[self.it]
 
         # Rainmaker
@@ -2250,8 +2256,9 @@ class CogViewer(ShowBase):
             suit_paths = globals.SUIT_TEXTURE_PATH.get("dj")
             self.it = (self.it + 1) % len(suit_paths)
             tx_suit = loader.loadTexture(suit_paths[self.it])
-            self.actor.find('**/body').setTexture(tx_suit, 1)
-            self.actor.find('**/bowtie').setTexture(tx_suit, 1)
+            if not self.actor.find('**/body').isEmpty():
+                self.actor.find('**/body').setTexture(tx_suit, 1)
+                self.actor.find('**/bowtie').setTexture(tx_suit, 1)
             self.store_suit_texture = suit_paths[self.it]
 
     def cycle_slot_l(self, iterate=True):
@@ -2944,46 +2951,49 @@ class CogViewer(ShowBase):
                 # Cycle through available suit textures for the department
                 self.it = (self.it + 1) % len(suit_paths)
                 tx_suit = loader.loadTexture(suit_paths[self.it])
-                self.actor.find('**/body').setTexture(tx_suit, 1)
-                self.actor.find('**/necktie-s').setTexture(tx_suit, 1)
-                self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
-                self.actor.find('**/bowtie').setTexture(tx_suit, 1)
-                if dept == "c" and self.it == 2 or self.it == 3:  # Toggle tie model for bossbot waiters
-                    self.actor.find('**/necktie-w').hide()
-                    self.actor.find('**/bowtie').show()
-                elif dept == "c" and self.it < 2 or self.it > 3:
-                    self.actor.find('**/necktie-w').show()
-                    self.actor.find('**/bowtie').hide()
+                if not self.actor.find('**/body').isEmpty():
+                    self.actor.find('**/body').setTexture(tx_suit, 1)
+                    self.actor.find('**/necktie-s').setTexture(tx_suit, 1)
+                    self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
+                    self.actor.find('**/bowtie').setTexture(tx_suit, 1)
+                    if dept == "c" and self.it == 2 or self.it == 3:  # Toggle tie model for bossbot waiters
+                        self.actor.find('**/necktie-w').hide()
+                        self.actor.find('**/bowtie').show()
+                    elif dept == "c" and self.it < 2 or self.it > 3:
+                        self.actor.find('**/necktie-w').show()
+                        self.actor.find('**/bowtie').hide()
             elif suitToggle == "s":  # Skelecogs
                 dept = dept + "s"
                 suit_paths = globals.SUIT_TEXTURE_PATH.get(dept)
                 self.it = (self.it + 1) % len(suit_paths)
                 tx_suit = loader.loadTexture(suit_paths[self.it])
-                self.actor.find('**/body').setTexture(tx_suit, 1)
-                self.actor.find('**/necktie-s').setTexture(tx_suit, 1)
-                self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
-                self.actor.find('**/bowtie').setTexture(tx_suit, 1)
-                self.head.setTexture(tx_suit, 1)
-                if dept == "cs" and self.it == 2:  # Toggle tie model for skelecog waiters
-                    self.actor.find('**/necktie-w').hide()
-                    self.actor.find('**/bowtie').show()
-                elif dept == "c" and self.it < 2 or self.it > 2:
-                    self.actor.find('**/necktie-w').show()
-                    self.actor.find('**/bowtie').hide()
+                if not self.actor.find('**/body').isEmpty():
+                    self.actor.find('**/body').setTexture(tx_suit, 1)
+                    self.actor.find('**/necktie-s').setTexture(tx_suit, 1)
+                    self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
+                    self.actor.find('**/bowtie').setTexture(tx_suit, 1)
+                    self.head.setTexture(tx_suit, 1)
+                    if dept == "cs" and self.it == 2:  # Toggle tie model for skelecog waiters
+                        self.actor.find('**/necktie-w').hide()
+                        self.actor.find('**/bowtie').show()
+                    elif dept == "c" and self.it < 2 or self.it > 2:
+                        self.actor.find('**/necktie-w').show()
+                        self.actor.find('**/bowtie').hide()
             elif suitToggle == "u":  # Cogs with unique head/body textures
                 suit_paths = globals.SUIT_TEXTURE_PATH.get(cog_data["name"])
                 head_paths = globals.HEAD_TEXTURE_PATH.get(cog_data["name"])
                 self.it = (self.it + 1) % len(suit_paths)
                 tx_suit = loader.loadTexture(suit_paths[self.it])
                 tx_head = loader.loadTexture(head_paths[self.it])
-                self.actor.find('**/body').setTexture(tx_suit, 1)
-                self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
-                self.head.setTexture(tx_head, 1)
-                if cog_data["cog"] in ["chainsawconsultant"]:
-                    if self.it > 1:
-                        self.head.find('**/bulbLeft').hide()
-                    else:
-                        self.head.find('**/bulbLeft').show()
+                if not self.actor.find('**/body').isEmpty():
+                    self.actor.find('**/body').setTexture(tx_suit, 1)
+                    self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
+                    self.head.setTexture(tx_head, 1)
+                    if cog_data["cog"] in ["chainsawconsultant"]:
+                        if self.it > 1:
+                            self.head.find('**/bulbLeft').hide()
+                        else:
+                            self.head.find('**/bulbLeft').show()
 
             elif suitToggle == "cch":
                 suit_paths = globals.SUIT_TEXTURE_PATH.get(cog_name)
@@ -3009,8 +3019,9 @@ class CogViewer(ShowBase):
                 self.it = (self.it + 1) % len(suit_paths)
                 tx_suit = loader.loadTexture(suit_paths[self.it])
                 tx_body = loader.loadTexture(body_paths[self.it])
-                self.actor.find('**/body').setTexture(tx_suit, 1)
-                self.actor.find('**/highroller_body').setTexture(tx_body, 1)
+                if not self.actor.find('**/body').isEmpty():
+                    self.actor.find('**/body').setTexture(tx_suit, 1)
+                    self.actor.find('**/highroller_body').setTexture(tx_body, 1)
             elif suitToggle == "rm":  # Rainmaker
                 for Hair in self.head.findAllTextureStages("*hair"):
                     self.it2 += 0.2
@@ -3031,8 +3042,9 @@ class CogViewer(ShowBase):
                 suit_paths = globals.SUIT_TEXTURE_PATH.get("dj")
                 self.it = (self.it + 1) % len(suit_paths)
                 tx_suit = loader.loadTexture(suit_paths[self.it])
-                self.actor.find('**/body').setTexture(tx_suit, 1)
-                self.actor.find('**/bowtie').setTexture(tx_suit, 1)
+                if not self.actor.find('**/body').isEmpty():
+                    self.actor.find('**/body').setTexture(tx_suit, 1)
+                    self.actor.find('**/bowtie').setTexture(tx_suit, 1)
 
     def upload_texture(self, part, target):
         root = tk.Tk()
