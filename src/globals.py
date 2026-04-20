@@ -1,7 +1,9 @@
 import os
+import direct.stdpy.glob as pglob
 import glob
 from direct.gui.DirectGui import DirectSlider
 from direct.gui.OnscreenText import OnscreenText
+from panda3d.core import DSearchPath, Filename
 from panda3d.core import VirtualFileSystem, Filename
 import re
 import crossfiledialog 
@@ -15,8 +17,9 @@ def winPathToLinux(input: str | None):
     return re.sub(r'^(.*?):\\', lambda m: "/"+m.group(1).lower()+"/", input).replace("\\", "/")
 
 base_path = os.path.expandvars(r'%LOCALAPPDATA%')
-
 name = os.path.join(base_path, "Corporate Clash", "resources", "default")  
+
+
 if os.path.exists(name):
     folder = crossfiledialog.choose_folder(
         title="choose folder with multifiles",
@@ -26,6 +29,7 @@ else:
     folder = crossfiledialog.choose_folder(
         title="choose folder with multifiles",
     )
+
 def processMultifiles(files , folder=""):
     get_model_path().append_directory("resources/")
 
@@ -60,6 +64,15 @@ CONFIG_DIR = "CogViewerConfig.prc"
 
 def os_path_join(*in_args):
     return "/".join(in_args)
+
+def glob_glob(in_arg, recursive=True):
+
+    fulllist = glob.glob(in_arg, recursive=recursive) + pglob.glob(in_arg)
+    print(in_arg)
+    listing = []
+    for i in fulllist:
+        listing.append(winPathToLinux(i))
+    return listing
     
 # ***************** FIND BODY MODELS ***************
 SUIT_A_MODEL = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitA-mod.bam")  # a
@@ -102,8 +115,8 @@ CLO_HEAD_MODEL = os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "lawb
 CEO_BODY_MODEL = os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-zero.bam")
 CEO_HEAD_MODEL = os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "bossbotBoss-head-zero.bam")
 
-VP_TORSO_ANIMS = glob.glob(os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-*.bam"))
-VP_LEGS_ANIMS = glob.glob(os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-legs-*.bam"))
+VP_TORSO_ANIMS = glob_glob(os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-torso-*.bam"))
+VP_LEGS_ANIMS = glob_glob(os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-legs-*.bam"))
 
 # ***************** FIND SKELECOG HEAD MODELS ***************
 SUIT_A_SKELECOG_HEAD = os_path_join(RESOURCES_DIR, "phase_5", "models", "char", "suitA_skeleton_skull-zero.bam")
@@ -125,10 +138,10 @@ def create_anim_dict(file_list, prefix_len_to_strip):
 VP_TORSO_ANIM_DICT = create_anim_dict(VP_TORSO_ANIMS, len("bossCog-torso-"))
 VP_LEGS_ANIM_DICT = create_anim_dict(VP_LEGS_ANIMS, len("bossCog-legs-"))
 
-VP_HEAD_ANIMS = glob.glob(os_path_join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-head-*.bam"))
-CFO_HEAD_ANIMS = glob.glob(os_path_join(RESOURCES_DIR, "phase_10", "models", "char", "cashbotBoss-head-*.bam"))
-CLO_HEAD_ANIMS = glob.glob(os_path_join(RESOURCES_DIR, "phase_11", "models", "char", "lawbotBoss-head-*.bam"))
-CEO_HEAD_ANIMS = glob.glob(os_path_join(RESOURCES_DIR, "phase_12", "models", "char", "bossbotBoss-head-*.bam"))
+VP_HEAD_ANIMS = glob_glob(os.path.join(RESOURCES_DIR, "phase_9", "models", "char", "bossCog-head-*.bam"))
+CFO_HEAD_ANIMS = glob_glob(os.path.join(RESOURCES_DIR, "phase_10", "models", "char", "cashbotBoss-head-*.bam"))
+CLO_HEAD_ANIMS = glob_glob(os.path.join(RESOURCES_DIR, "phase_11", "models", "char", "lawbotBoss-head-*.bam"))
+CEO_HEAD_ANIMS = glob_glob(os.path.join(RESOURCES_DIR, "phase_12", "models", "char", "bossbotBoss-head-*.bam"))
 
 VP_HEAD_ANIM_DICT = create_anim_dict(VP_HEAD_ANIMS, len("bossCog-head-"))
 CFO_HEAD_ANIM_DICT = create_anim_dict(CFO_HEAD_ANIMS, len("cashbotBoss-head-"))
@@ -187,10 +200,10 @@ COG_ICONS_BASE = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "ttc
 COG_ICON_HPR = (0.00, 0.00, 0.00, 180.00, 0.00, 0.00, 1.00, 1.00, 1.00)
 
 # ***************** FIND SUIT ANIMATIONS ***************
-SUIT_A_ANIMATION_PATHS = glob.glob(os_path_join(RESOURCES_DIR, "**", "suitA-*.bam"), recursive=True)
-SUIT_B_ANIMATION_PATHS = glob.glob(os_path_join(RESOURCES_DIR, "**", "suitB-*.bam"), recursive=True)
-SUIT_C_ANIMATION_PATHS = glob.glob(os_path_join(RESOURCES_DIR, "**", "suitC-*.bam"), recursive=True)
-BOSS_COG_ANIMATION_PATHS = glob.glob(os_path_join(RESOURCES_DIR, "**", "bossCog-torso*.bam"), recursive=True)
+SUIT_A_ANIMATION_PATHS = glob_glob(os.path.join(RESOURCES_DIR, "**", "suitA-*.bam"), recursive=True)
+SUIT_B_ANIMATION_PATHS = glob_glob(os.path.join(RESOURCES_DIR, "**", "suitB-*.bam"), recursive=True)
+SUIT_C_ANIMATION_PATHS = glob_glob(os.path.join(RESOURCES_DIR, "**", "suitC-*.bam"), recursive=True)
+BOSS_COG_ANIMATION_PATHS = glob_glob(os.path.join(RESOURCES_DIR, "**", "bossCog-torso*.bam"), recursive=True)
 
 SUIT_A_ANIMATION_DICT = {}
 SUIT_B_ANIMATION_DICT = {}
@@ -220,10 +233,10 @@ SUIT_C_ANIMATIONS.sort()
 BOSS_COG_ANIMATIONS.sort()
 
 # NEUTRAL ANIMATIONS
-SUIT_A_NEUTRAL_ANIM_PATH = glob.glob(os_path_join(RESOURCES_DIR, "**", "suitA-neutral.bam"), recursive=True)
-SUIT_B_NEUTRAL_ANIM_PATH = glob.glob(os_path_join(RESOURCES_DIR, "**", "suitB-neutral.bam"), recursive=True)
-SUIT_C_NEUTRAL_ANIM_PATH = glob.glob(os_path_join(RESOURCES_DIR, "**", "suitC-neutral.bam"), recursive=True)
-BOSS_COG_NEUTRAL_ANIM_PATH = glob.glob(os_path_join(RESOURCES_DIR, "**", "bossCog-torso-Fb_neutral.bam"),
+SUIT_A_NEUTRAL_ANIM_PATH = glob_glob(os.path.join(RESOURCES_DIR, "**", "suitA-neutral.bam"), recursive=True)
+SUIT_B_NEUTRAL_ANIM_PATH = glob_glob(os.path.join(RESOURCES_DIR, "**", "suitB-neutral.bam"), recursive=True)
+SUIT_C_NEUTRAL_ANIM_PATH = glob_glob(os.path.join(RESOURCES_DIR, "**", "suitC-neutral.bam"), recursive=True)
+BOSS_COG_NEUTRAL_ANIM_PATH = glob_glob(os.path.join(RESOURCES_DIR, "**", "bossCog-torso-Fb_neutral.bam"),
                                        recursive=True)
 
 # ***************** FIND HEAD ANIMATIONS ***************
@@ -232,7 +245,7 @@ HEAD_ANIMS = []
 
 
 def HEAD_ANIMATION_PATH(cog_name):
-    HEAD_ANIMATION_PATHS = glob.glob(os_path_join(RESOURCES_DIR, "**", f"{cog_name}*.bam"), recursive=True)
+    HEAD_ANIMATION_PATHS = glob_glob(os.path.join(RESOURCES_DIR, "**", f"{cog_name}*.bam"), recursive=True)
     HEAD_ANIMATION_DICT = {}
     NAME_LENGTH = len(cog_name)
 
@@ -265,45 +278,10 @@ EXCLUDE_PREFIXES = ["suitA-", "suitB-", "suitC-", "tt_a_ara_", "bossCog-", "hole
                     "cc_m_ara-"]
 EXCLUDE_SUFFIXES = ["_camera.bam", "_cammodel.bam"]
 
-all_file_paths = []
-for phase in PHASES:
-    for folder_name in FOLDERS_TO_SEARCH:
-        current_search_path = os_path_join(RESOURCES_DIR, f"phase_{phase}", "models", folder_name)
+base_dir = str(Filename.fromOsSpecific(os.getcwd()))
 
-        if not os.path.exists(current_search_path):
-            continue
-
-        if folder_name == "accessories":
-            search_pattern = os_path_join(current_search_path, "**", "*.bam")
-            all_file_paths.extend(glob.glob(search_pattern, recursive=True))
-        else:
-            search_pattern = os_path_join(current_search_path, "*.bam")
-            all_file_paths.extend(glob.glob(search_pattern))
-
-golf_path = os_path_join(RESOURCES_DIR, "phase_6", "models", "golf")
-if os.path.exists(golf_path):
-    search_pattern = os_path_join(golf_path, "**", "*.bam")
-    all_file_paths.extend(glob.glob(search_pattern, recursive=True))
-
-foog_path = os_path_join(RESOURCES_DIR, "phase_12", "models", "bossbotHQ")
-if os.path.exists(foog_path):
-    search_pattern = os_path_join(foog_path, "**", "*.bam")
-    all_file_paths.extend(glob.glob(search_pattern, recursive=True))
-
-plant_path = os_path_join(RESOURCES_DIR, "phase_11", "models", "lawbotHQ")
-if os.path.exists(plant_path):
-    search_pattern = os_path_join(plant_path, "**", "*.bam")
-    all_file_paths.extend(glob.glob(search_pattern, recursive=True))
-
-rose_path = os_path_join(RESOURCES_DIR, "phase_6", "models", "miniboss")
-if os.path.exists(rose_path):
-    search_pattern = os_path_join(rose_path, "**", "*.bam")
-    all_file_paths.extend(glob.glob(search_pattern, recursive=True))
-
-file_path_map = {}
-
-    
 def getVFStree(path):
+    global base_dir
     directory = vfs.scanDirectory(path)
     
     if directory:
@@ -320,11 +298,45 @@ def getVFStree(path):
                 getVFStree(file_path)
             else:
                 basename_no_ext = file_name[:-4]
-                file_path_map[basename_no_ext] = file_path
+                relative_path = Filename.fromOsSpecific(os.path.relpath(file_path, base_dir))
+                file_path_map[basename_no_ext] = str(relative_path)
 
-getVFStree("resources/")
+file_path_map = {}
 
-print(file_path_map)
+all_file_paths = []
+for phase in PHASES:
+    for folder_name in FOLDERS_TO_SEARCH:
+        current_search_path = os_path_join(RESOURCES_DIR, f"phase_{phase}", "models", folder_name)
+        getVFStree(current_search_path)
+        if not os.path.exists(current_search_path):
+            continue
+
+        if folder_name == "accessories":
+            search_pattern = os_path_join(current_search_path, "**", "*.bam")
+            all_file_paths.extend(glob_glob(search_pattern, recursive=True))
+        else:
+            search_pattern = os_path_join(current_search_path, "*.bam")
+            all_file_paths.extend(glob_glob(search_pattern))
+
+golf_path = os_path_join(RESOURCES_DIR, "phase_6", "models", "golf")
+if os.path.exists(golf_path):
+    search_pattern = os_path_join(golf_path, "**", "*.bam")
+    all_file_paths.extend(glob_glob(search_pattern, recursive=True))
+
+foog_path = os_path_join(RESOURCES_DIR, "phase_12", "models", "bossbotHQ")
+if os.path.exists(foog_path):
+    search_pattern = os_path_join(foog_path, "**", "*.bam")
+    all_file_paths.extend(glob_glob(search_pattern, recursive=True))
+
+plant_path = os_path_join(RESOURCES_DIR, "phase_11", "models", "lawbotHQ")
+if os.path.exists(plant_path):
+    search_pattern = os_path_join(plant_path, "**", "*.bam")
+    all_file_paths.extend(glob_glob(search_pattern, recursive=True))
+
+rose_path = os_path_join(RESOURCES_DIR, "phase_6", "models", "miniboss")
+if os.path.exists(rose_path):
+    search_pattern = os_path_join(rose_path, "**", "*.bam")
+    all_file_paths.extend(glob_glob(search_pattern, recursive=True))
 
 for file_path in all_file_paths:
     file_name = os.path.basename(file_path)
