@@ -2157,7 +2157,14 @@ COG_DATA = {
 }
 
 KEYS_LIST = list(COG_DATA.keys())
-
+for to_verify in KEYS_LIST:
+    try:
+        head = COG_DATA[to_verify]["head"]
+    except KeyError:
+        head = COG_DATA[to_verify]["parts"]["head"]
+        
+    if not len(glob_glob(head)) > 0:
+        del COG_DATA[to_verify]
 
 def create_hpr_sliders(update_hpr_func):
     h_slider = DirectSlider(range=(-180, 180), value=0, pos=(0.8, 0, 0.5), scale=0.5, command=update_hpr_func,
