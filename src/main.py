@@ -1806,23 +1806,27 @@ class CogViewer(ShowBase):
         self.build_body(suit_type)
 
         ##### SET SUIT/NECKTIE TEXTURE ########################################
-        tx_suit = loader.loadTexture(cog_data["suitTex"])
-        if suit_type in ["erfit"] or cog_data['name'] in ["ttcc_ene_counterfit"]:
-            self.actor.find('**/body').setTexture(tx_suit, 1)
-        else:
-            self.actor.find('**/body').setTexture(tx_suit, 1)
-            self.actor.find('**/necktie-s').setTexture(tx_suit, 1)
-            self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
-            self.actor.find('**/bowtie').setTexture(tx_suit, 1)
+        try:
+            tx_suit = loader.loadTexture(cog_data["suitTex"])
+            if suit_type in ["erfit"] or cog_data['name'] in ["ttcc_ene_counterfit"]:
+                self.actor.find('**/body').setTexture(tx_suit, 1)
+            else:
+                self.actor.find('**/body').setTexture(tx_suit, 1)
+                self.actor.find('**/necktie-s').setTexture(tx_suit, 1)
+                self.actor.find('**/necktie-w').setTexture(tx_suit, 1)
+                self.actor.find('**/bowtie').setTexture(tx_suit, 1)
 
-        # Fix for Bellringer & Insider, set their hand textures
-        if suit_type == "bc":
-            self.actor.find('**/hands').setTexture(tx_suit, 1)
+            # Fix for Bellringer & Insider, set their hand textures
+            if suit_type == "bc":
+                if(not self.actor.find('**/hands').isEmpty()):
+                    self.actor.find('**/hands').setTexture(tx_suit, 1)
 
-        if (suit_type == "mph"):
-            tx_body = loader.loadTexture(globals.MP_BODY)
-            self.actor.find('**/bowtie').setTexture(tx_body, 1)
-            self.actor.find('**/highroller_body').setTexture(tx_body, 1)
+            if (suit_type == "mph"):
+                tx_body = loader.loadTexture(globals.MP_BODY)
+                self.actor.find('**/bowtie').setTexture(tx_body, 1)
+                self.actor.find('**/highroller_body').setTexture(tx_body, 1)
+        except IOError:
+            print("suit textures not found")
 
         # Call build_necktie function
         if suit_type not in globals.NO_NECKTIE_SUITS:
@@ -1830,37 +1834,47 @@ class CogViewer(ShowBase):
         else:
             self.control_panel.hide_tie_list()
             if suit_type not in ["erfit"]:
-                self.actor.find('**/necktie-s').hide()  # Hide Sellbot necktie
-                self.actor.find('**/necktie-w').hide()  # Hide Cash/Boss/Board necktie
-                self.actor.find('**/bowtie').hide()  # Hide Law bowtie
-
-        self.head = loader.loadModel(cog_data["head"])
-
+                if(not self.actor.find('**/necktie-s').isEmpty()):
+                    self.actor.find('**/necktie-s').hide()  # Hide Sellbot necktie
+                    self.actor.find('**/necktie-w').hide()  # Hide Cash/Boss/Board necktie
+                    self.actor.find('**/bowtie').hide()  # Hide Law bowtie
+        try:
+            self.head = loader.loadModel(cog_data["head"])
+        except OSError:
+            self.head = loader.loadModel(globals.SHADOW_MODEL)
+            
         # Check to make sure our actor is not a filthy skelecog!!
         if (suit_type not in ["as", "bs", "cs", "bossCog"]):
-            self.actor.find('**/hands').setColor(cog_data["hands"])
+            if(not self.actor.find('**/hands').isEmpty()):
+                self.actor.find('**/hands').setColor(cog_data["hands"])
 
             medallion = cog_data["emblem"]
             chest_null = self.actor.find("**/joint_attachMeter")
             # icons = loader.loadModel(globals.COG_ICONS)
-            self.iconbase = loader.loadModel(globals.COG_ICONS_BASE)
-            self.iconbase.reparentTo(chest_null)
-
-            # icons.setPosHprScale(*globals.COG_ICON_HPR)
-            chest_null.setH(0)
+            try:
+                self.iconbase = loader.loadModel(globals.COG_ICONS_BASE)
+                self.iconbase.reparentTo(chest_null)
+                # icons.setPosHprScale(*globals.COG_ICON_HPR)
+                chest_null.setH(0)
+            except OSError:
+                self.iconbase = loader.loadModel(globals.SHADOW_MODEL)
+           
 
             self.iconbase.setPosHprScale(*globals.COG_ICON_HPR)
-
-            self.iconbase.find('**/emblem_hp').hide()
-            self.iconbase.find('**/glow').hide()
-            self.iconbase.find('**/emblem_sales').hide()
-            self.iconbase.find('**/emblem_money').hide()
-            self.iconbase.find('**/emblem_legal').hide()
-            self.iconbase.find('**/emblem_corp').hide()
-            self.iconbase.find('**/emblem_board').hide()
-
+            
             emblem = cog_data["emblem"]
-            self.iconbase.find(f'**/{emblem}').show()
+            
+            if not self.iconbase.find('**/emblem_hp').isEmpty():
+                self.iconbase.find('**/emblem_hp').hide()
+                self.iconbase.find('**/glow').hide()
+                self.iconbase.find('**/emblem_sales').hide()
+                self.iconbase.find('**/emblem_money').hide()
+                self.iconbase.find('**/emblem_legal').hide()
+                self.iconbase.find('**/emblem_corp').hide()
+                self.iconbase.find('**/emblem_board').hide()
+
+                
+                self.iconbase.find(f'**/{emblem}').show()
 
             if suit_type in ["a", "af", "cch", "mph", "hr"]:
                 self.iconbase.setY(-0.10)
@@ -1897,10 +1911,16 @@ class CogViewer(ShowBase):
 
         if len(head_anims) > 1:
             self.head = Actor(head_path, head_animations)
+            if not self.actor.find('**/joint_head').isEmpty():
+                self.head.reparentTo(self.actor.find('**/joint_head'))
         else:
-            self.head = loader.loadModel(head_path)
+            try:
+                self.head = loader.loadModel(head_path)
+                self.head.reparentTo(self.actor.find('**/joint_head'))
+            except OSError:
+                self.head = loader.loadModel(globals.SHADOW_MODEL)
 
-        self.head.reparentTo(self.actor.find('**/joint_head'))
+        
 
         # Head resize for specific cogs
         if "headSize" in cog_data:
@@ -2038,24 +2058,29 @@ class CogViewer(ShowBase):
         elif (suit_type in ["bossCog"]):
             body_animations = globals.BOSS_COG_ANIMATION_DICT
             self.available_animations = globals.BOSS_COG_ANIMATIONS
-
-        self.actor = Actor(body_path, body_animations)
-        self.shadow.reparentTo(self.actor.find('**/joint_shadow'))
+        try:
+            self.actor = Actor(body_path, body_animations)
+            self.shadow.reparentTo(self.actor.find('**/joint_shadow'))
+        except IOError:
+            self.actor = Actor(globals.SHADOW_MODEL)
+        
 
     def build_necktie(self):
         cog_data = self.cog_data
         self.control_panel.show_tie_list()
 
         # We hide the neckties by default, then re-enable them for departments
-        self.actor.find('**/necktie-s').hide()  # Hide Sellbot necktie
-        self.actor.find('**/necktie-w').hide()  # Hide Cash/Boss/Board necktie
-        self.actor.find('**/bowtie').hide()  # Hide Law bowtie
+        if(not self.actor.find('**/necktie-s').isEmpty()):
+            self.actor.find('**/necktie-s').hide()  # Hide Sellbot necktie
+            self.actor.find('**/necktie-w').hide()  # Hide Cash/Boss/Board necktie
+            self.actor.find('**/bowtie').hide()  # Hide Law bowtie
 
         if cog_data["cog"] not in globals.NO_NECKTIE_COGS:
             necktie_map = globals.NECKTIE_MAP
             necktie = necktie_map.get(cog_data["cog"]) or necktie_map.get(
                 cog_data["dept"])  # Search by cog name or department
-            self.actor.find(necktie).show()  # Find the appropriate necktie and unhide it
+            if(not self.actor.find(necktie).isEmpty()):
+                self.actor.find(necktie).show()  # Find the appropriate necktie and unhide it
 
     def set_suit_texture(self, trigger=None):
         """Applies Executive, Fired, or Waiter textures."""
@@ -2416,7 +2441,8 @@ class CogViewer(ShowBase):
 
             if self.suit_type not in ["as", "bs", "cs", "boss"]:
                 if "handsHW" in cog_data:
-                    self.actor.find('**/hands').setColor(cog_data["handsHW"])
+                    if(not self.actor.find('**/hands').isEmpty()):
+                        self.actor.find('**/hands').setColor(cog_data["handsHW"])
 
             self.is_costume_active = True
 
@@ -2480,7 +2506,8 @@ class CogViewer(ShowBase):
 
             if (suit_type not in ["as", "bs", "cs", "bossCog"]):
                 if "hands" in cog_data:
-                    self.actor.find('**/hands').setColor(cog_data["hands"])
+                    if(not self.actor.find('**/hands').isEmpty()):
+                        self.actor.find('**/hands').setColor(cog_data["hands"])
 
             self.is_costume_active = False
 
@@ -3354,7 +3381,8 @@ class CogViewer(ShowBase):
                 # Skelecog using suitB closed collar model
                 if suit_model_key in ["bc"]:
                     hand_tex = loader.loadTexture(globals.DEPT_SUIT_TEX_MAP[self.cog_data["dept"]])
-                    self.actor.find('**/hands').setTexture(hand_tex, 1)
+                    if(not self.actor.find('**/hands').isEmpty()):
+                        self.actor.find('**/hands').setTexture(hand_tex, 1)
             # skelecog model #
             elif self.store_skelecog_texture is not None:
                 self.apply_suit_texture(self.store_skelecog_texture)
