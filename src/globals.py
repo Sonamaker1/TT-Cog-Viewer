@@ -8,13 +8,17 @@ from panda3d.core import VirtualFileSystem, Filename
 import re
 import crossfiledialog 
 from panda3d.core import get_model_path
-  
+import fnmatch
+
 vfs = VirtualFileSystem.getGlobalPtr()
 # Mount 'my_assets.mf' to the root of the VFS
 mount_path = "resources/" 
 
 def winPathToLinux(input: str | None):
     return re.sub(r'^(.*?):\\', lambda m: "/"+m.group(1).lower()+"/", input).replace("\\", "/")
+
+def normalize(input: str | None):
+    return input.replace("\*\*", "\*")
 
 base_path = os.path.expandvars(r'%LOCALAPPDATA%')
 name = os.path.join(base_path, "Corporate Clash", "resources", "default")  
@@ -66,13 +70,69 @@ def os_path_join(*in_args):
     return "/".join(in_args)
 
 def glob_glob(in_arg, recursive=True):
-
-    fulllist = glob.glob(in_arg, recursive=recursive) + pglob.glob(in_arg)
-    print(in_arg)
+    fixedInput =  normalize(winPathToLinux(in_arg))
+    matching_keys = [k for k in file_reverse_path_map.keys() if fnmatch.fnmatch(k, fixedInput)]
+    
+    fulllist = glob.glob(in_arg, recursive=recursive) + matching_keys
+    print(fixedInput)
+    print(matching_keys)
     listing = []
     for i in fulllist:
         listing.append(winPathToLinux(i))
     return listing
+    
+base_dir = str(Filename.fromOsSpecific(os.getcwd()))
+
+file_path_map = {}
+file_reverse_path_map = {}
+
+def getVFStree(path):
+    global base_dir
+    directory = vfs.scanDirectory(path)
+    
+    if directory:
+        for file in directory:
+            file_path = str(file.getFilename())
+            file_name = os.path.basename(file_path)
+        
+            if file.isDirectory():
+                getVFStree(file_path)
+            else:
+                basename_no_ext = file_name[:-4]
+                relative_path = Filename.fromOsSpecific(os.path.relpath(file_path, base_dir))
+                file_reverse_path_map[str(relative_path)] = basename_no_ext
+                if any(file_name.startswith(p) for p in EXCLUDE_PREFIXES):
+                    continue
+                if any(file_name.endswith(s) for s in EXCLUDE_SUFFIXES):
+                    continue
+                file_path_map[basename_no_ext] = str(relative_path)
+                
+PHASES = ["3", "3.5", "4", "5", "5.5", "6", "7", "8", "9", "10", "11", "12", "13", "14"]
+
+PROPS_DICT = {}
+FOLDERS_TO_SEARCH = ["props", "char", "accessories"]
+
+EXCLUDE_PREFIXES = ["suitA-", "suitB-", "suitC-", "tt_a_ara_", "bossCog-", "hole", "Bossbot", "bossbot", "Banquet",
+                    "cc_m_ara-"]
+EXCLUDE_SUFFIXES = ["_camera.bam", "_cammodel.bam"]
+
+all_file_paths = []
+
+getVFStree("resources/")
+
+for phase in PHASES:
+    for folder_name in FOLDERS_TO_SEARCH:
+        current_search_path = os_path_join(RESOURCES_DIR, f"phase_{phase}", "models", folder_name)
+        getVFStree(current_search_path)
+        if not os.path.exists(current_search_path):
+            continue
+
+        if folder_name == "accessories":
+            search_pattern = os_path_join(current_search_path, "**", "*.bam")
+            all_file_paths.extend(glob_glob(search_pattern, recursive=True))
+        else:
+            search_pattern = os_path_join(current_search_path, "*.bam")
+            all_file_paths.extend(glob_glob(search_pattern))
     
 # ***************** FIND BODY MODELS ***************
 SUIT_A_MODEL = os_path_join(RESOURCES_DIR, "phase_3.5", "models", "char", "suitA-mod.bam")  # a
@@ -269,54 +329,9 @@ def PATH_PROP(prop_name):
 def map_path(phase, texture_name):
     return os_path_join(RESOURCES_DIR, f"phase_{phase}", "maps", texture_name)
 
-PHASES = ["3", "3.5", "4", "5", "5.5", "6", "7", "8", "9", "10", "11", "12", "13", "14"]
 
-PROPS_DICT = {}
-FOLDERS_TO_SEARCH = ["props", "char", "accessories"]
 
-EXCLUDE_PREFIXES = ["suitA-", "suitB-", "suitC-", "tt_a_ara_", "bossCog-", "hole", "Bossbot", "bossbot", "Banquet",
-                    "cc_m_ara-"]
-EXCLUDE_SUFFIXES = ["_camera.bam", "_cammodel.bam"]
 
-base_dir = str(Filename.fromOsSpecific(os.getcwd()))
-
-def getVFStree(path):
-    global base_dir
-    directory = vfs.scanDirectory(path)
-    
-    if directory:
-        for file in directory:
-            file_path = str(file.getFilename())
-            file_name = os.path.basename(file_path)
-        
-            if any(file_name.startswith(p) for p in EXCLUDE_PREFIXES):
-                continue
-            if any(file_name.endswith(s) for s in EXCLUDE_SUFFIXES):
-                continue
-                
-            if file.isDirectory():
-                getVFStree(file_path)
-            else:
-                basename_no_ext = file_name[:-4]
-                relative_path = Filename.fromOsSpecific(os.path.relpath(file_path, base_dir))
-                file_path_map[basename_no_ext] = str(relative_path)
-
-file_path_map = {}
-
-all_file_paths = []
-for phase in PHASES:
-    for folder_name in FOLDERS_TO_SEARCH:
-        current_search_path = os_path_join(RESOURCES_DIR, f"phase_{phase}", "models", folder_name)
-        getVFStree(current_search_path)
-        if not os.path.exists(current_search_path):
-            continue
-
-        if folder_name == "accessories":
-            search_pattern = os_path_join(current_search_path, "**", "*.bam")
-            all_file_paths.extend(glob_glob(search_pattern, recursive=True))
-        else:
-            search_pattern = os_path_join(current_search_path, "*.bam")
-            all_file_paths.extend(glob_glob(search_pattern))
 
 golf_path = os_path_join(RESOURCES_DIR, "phase_6", "models", "golf")
 if os.path.exists(golf_path):
