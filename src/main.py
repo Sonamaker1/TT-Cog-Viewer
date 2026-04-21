@@ -1842,7 +1842,12 @@ class CogViewer(ShowBase):
                 self.actor.find('**/highroller_body').setTexture(tx_body, 1)
         except IOError:
             print("suit textures not found")
-
+        if "texture_parts" in cog_data:
+            for extra in cog_data["texture_parts"].keys():
+                txture_suit = loader.loadTexture(cog_data["texture_parts"][extra])
+                if not self.actor.find(extra).isEmpty():
+                    self.actor.find(extra).setTexture(txture_suit, 1)
+        
         # Call build_necktie function
         if suit_type not in globals.NO_NECKTIE_SUITS:
             self.build_necktie()
@@ -1942,7 +1947,7 @@ class CogViewer(ShowBase):
                 if not self.actor.find('**/def_M_head_01').isEmpty():
                     allExtras = self.head.findAllMatches("**")
                     for part in allExtras:
-                        if part.getName() == cog_data["cog"]:
+                        if part.getName() == cog_data["cog"] and ("headTextureName" in cog_data) and (cog_data["headTextureName"] != None):
                             texy = loader.loadModel(cog_data["headTextureModel"]).find(cog_data["headTextureName"])
                             part.setTexture(texy.findTexture("*"), 1)
                         
