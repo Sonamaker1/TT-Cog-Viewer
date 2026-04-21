@@ -31,17 +31,17 @@ TTR_SUIT_MODEL_NAMES = {
     "ttrc": "Fat (TTR)",
 }
 
-
-
 TTR_COG_DATA = {
     # *******************   SELLBOTS **********************************
     "TTR Bottom Feeder": {"suitTex": TTR_SELLBOT_SUIT,
                 "head": TTR_SUIT_MODEL_C_HEADS,
                 "hands": (191 / 255, 191 / 255, 242 / 255, 1),
-                "name": "ttr_r_ene_bottom_feeder",
+                "name": "ttr_r_ene_cgc_heads",
                 "scale": 0.96618,
                 "dept": "l",
-                "cog": "bottomfeeder",
+                "cog": "tightwad",
+                "headTextureName": "**/bottom-feeder",
+                "headTextureModel": "resources/phase_3.5/models/char/ttr_m_ene_cgc_heads_textures.bam",
                 "suit": "ttrc",
                 "suitToggle": "y",
                 "emblem": "emblem_legal"

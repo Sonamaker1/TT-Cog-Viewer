@@ -1914,11 +1914,29 @@ class CogViewer(ShowBase):
             self.head = Actor(head_path, head_animations)
             if not self.actor.find('**/joint_head').isEmpty():
                 self.head.reparentTo(self.actor.find('**/joint_head'))
+            if not self.actor.find('**/def_M_head_01').isEmpty():
+                allExtras = self.head.findAllMatches("**/")
+                allExtras.hide()
+                selectHead = self.head.findAllMatches("**/"+cog_data["cog"])
+                selectHead.show()
+                self.head.reparentTo(self.actor.find('**/def_M_head_01'))
         else:
             try:
                 self.head = loader.loadModel(head_path)
                 if not self.actor.find('**/joint_head').isEmpty():
                     self.head.reparentTo(self.actor.find('**/joint_head'))
+                if not self.actor.find('**/def_M_head_01').isEmpty():
+                    allExtras = self.head.findAllMatches("**")
+                    for part in allExtras:
+                        if part.getName() == cog_data["cog"]:
+                            texy = loader.loadModel(cog_data["headTextureModel"]).find(cog_data["headTextureName"])
+                            part.setTexture(texy.findTexture("*"), 1)
+                        
+                        if part.getName() != cog_data["cog"] and part.getName() != "suitC-heads" and part.getName() != "suitB-heads" and part.getName() != "suitA-heads":
+                            partinner = self.head.find(f"**/{part.getName()}")
+                            if not partinner.isEmpty():
+                                partinner.hide()
+                    self.head.reparentTo(self.actor.find('**/def_M_head_01'))
             except OSError:
                 self.head = loader.loadModel(globals.SHADOW_MODEL)
 
