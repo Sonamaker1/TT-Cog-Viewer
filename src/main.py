@@ -1340,7 +1340,10 @@ class CogViewer(ShowBase):
             if self.cog_data.get("cog_type") == "boss":
                 self.prop_item1_actor.reparentTo(self.boss_parts["torso"].find('**/joint17'))
             else:
-                self.prop_item1_actor.reparentTo(self.actor.find('**/joint_Rhold'))
+                holdR = self.actor.find('**/joint_Rhold')
+                if holdR.isEmpty():
+                    holdR = self.actor.find('**/jnt_R_attachProp_01')
+                self.prop_item1_actor.reparentTo(holdR)
             self.control_panel.setup_prop_anim_ui(
                 self.control_panel.prop1_anim_listbox,
                 self.control_panel.prop1_anim_slider,
@@ -1353,7 +1356,11 @@ class CogViewer(ShowBase):
             if self.cog_data.get("cog_type") == "boss":
                 self.prop_item1.reparentTo(self.boss_parts["torso"].find('**/joint17'))
             else:
-                self.prop_item1.reparentTo(self.actor.find('**/joint_Rhold'))
+                holdR = self.actor.find('**/joint_Rhold')
+                if holdR.isEmpty():
+                    holdR = self.actor.find('**/jnt_R_attachProp_01')
+                self.prop_item1.reparentTo(holdR)
+
 
         if prop == "flintbass":  # i hate this prop
             try:
@@ -1395,7 +1402,11 @@ class CogViewer(ShowBase):
             if self.cog_data.get("cog_type") == "boss":
                 self.prop_item2_actor.reparentTo(self.boss_parts["torso"].find('**/joint17'))
             else:
-                self.prop_item2_actor.reparentTo(self.actor.find('**/joint_Lhold'))
+                holdL = self.actor.find('**/joint_Lhold')
+                if holdL.isEmpty():
+                    holdL = self.actor.find('**/jnt_L_attachProp_01')
+                self.prop_item2_actor.reparentTo(holdL)
+                
             self.control_panel.setup_prop_anim_ui(
                 self.control_panel.prop2_anim_listbox,
                 self.control_panel.prop2_anim_slider,
@@ -1408,7 +1419,10 @@ class CogViewer(ShowBase):
             if self.cog_data.get("cog_type") == "boss":
                 self.prop_item2.reparentTo(self.boss_parts["torso"].find('**/joint17'))
             else:
-                self.prop_item2.reparentTo(self.actor.find('**/joint_Lhold'))
+                holdL = self.actor.find('**/joint_Lhold')
+                if holdL.isEmpty():
+                    holdL = self.actor.find('**/jnt_L_attachProp_01')
+                self.prop_item2.reparentTo(holdL)
 
         if prop2 == "flintbass":
             try:
