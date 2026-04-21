@@ -117,7 +117,7 @@ TTR_COG_A_DATA = {
     "bodyname": "ttra",
 }
 
-def MAKECOG(department, bodytype, headCog, textureNode, colorTuple, scale):
+def MAKECOG(department, bodytype, headCog, textureNode, scale, colorTuple):
     return {
         "hands": colorTuple,
         "scale": scale,
@@ -134,51 +134,104 @@ def MAKECOG(department, bodytype, headCog, textureNode, colorTuple, scale):
         "suitToggle": "y",
     }
 
+
+aSize = 6.06
+bSize = 5.29
+cSize = 4.14
+
+corpPolyColor = (0.95, 0.75, 0.75, 1.0)
+legalPolyColor = (0.75, 0.75, 0.95, 1.0)
+moneyPolyColor = (0.65, 0.95, 0.85, 1.0)
+salesPolyColor = (0.95, 0.75, 0.95, 1.0)
+
 color = (242 / 255, 242 / 255, 1, 1)
 scale = 0.96618
 
-TTR_COG_DATA = {
-    "TTR Cold Caller": MAKECOG( departmentSell, TTR_COG_C_DATA, "coldcaller", None, color, scale),
-    "TTR Short Change": MAKECOG( departmentCash, TTR_COG_C_DATA, "coldcaller", None, color, scale),
-    "TTR Bottom Feeder": MAKECOG( departmentLaw, TTR_COG_C_DATA, "tightwad", "**/bottom-feeder", (191 / 255, 191 / 255, 242 / 255, 1), 0.96618),
-    "TTR Flunky": MAKECOG( departmentBoss, TTR_COG_C_DATA, "flunky", None, color, scale),
+#Dictionary of Size and Colors
+DSC = {
+    'cc':[3.5 / cSize, (0.55, 0.65, 1.0, 1.0), (0.25, 0.35, 1.0, 1.0)], #coldcaller
+    'tm':[3.75 / bSize, salesPolyColor], #telemarketer
+    'nd':[4.35 / aSize, salesPolyColor], #name-dropper
+    'gh':[4.75 / cSize, salesPolyColor], #gladhander
+    'ms':[4.75 / bSize, salesPolyColor], #movershaker
+    'tf':[5.25 / aSize, salesPolyColor], #twoface
+    'm':[5.75 / aSize, salesPolyColor], #mingler
+    'mh':[7.0 / aSize, salesPolyColor], #mr-hollywood
 
-    "TTR Telemarketer": MAKECOG( departmentSell, TTR_COG_B_DATA, "telemarketer", None, color, scale),
-    "TTR Penny Pincher": MAKECOG( departmentCash, TTR_COG_A_DATA, "pennypincher", None, color, scale),
-    "TTR Bloodsucker": MAKECOG( departmentLaw, TTR_COG_B_DATA, "movershaker", "**/blood-sucker", (242 / 255, 242 / 255, 1, 1), 0.83521504950495049504950495049505),
-    "TTR Pencil Pusher": MAKECOG( departmentBoss, TTR_COG_B_DATA, "pencilpusher", None, color, scale),
-
-    "TTR Name Dropper": MAKECOG( departmentSell, TTR_COG_A_DATA, "numbercruncher", "**/name-dropper", color, scale),
-    "TTR Tightwad": MAKECOG( departmentCash, TTR_COG_C_DATA, "tightwad", None, color, scale),
-    "TTR Double Talker": MAKECOG( departmentLaw, TTR_COG_A_DATA, "twoface", "**/double-talker", color, scale),
-    "TTR Yesman": MAKECOG( departmentBoss, TTR_COG_A_DATA, "yesman", None, color, scale),
-
-    "TTR Glad Hander": MAKECOG( departmentSell, TTR_COG_C_DATA, "gladhander", None, color, scale),
-    "TTR Bean Counter": MAKECOG( departmentCash, TTR_COG_B_DATA, "beancounter", None, color, scale),
-    "TTR Ambulance Chaser": MAKECOG( departmentLaw, TTR_COG_B_DATA, "ambulancechaser", None, color, scale),
-    "TTR Micromanager": MAKECOG( departmentBoss, TTR_COG_C_DATA, "micromanager", None, color, scale),
-
-    "TTR Mover & Shaker": MAKECOG( departmentSell, TTR_COG_B_DATA, "movershaker", None, color, scale),
-    "TTR Number Cruncher": MAKECOG( departmentCash, TTR_COG_A_DATA, "numbercruncher", None, color, scale),
-    "TTR Back Stabber": MAKECOG( departmentLaw, TTR_COG_A_DATA, "backstabber", None, color, scale),
-    "TTR Downsizer": MAKECOG( departmentBoss, TTR_COG_B_DATA, "beancounter", None, color, scale),
-
-    "TTR Two-Face": MAKECOG( departmentSell, TTR_COG_A_DATA, "twoface", None, color, scale),
-    "TTR Money Bags": MAKECOG( departmentCash, TTR_COG_C_DATA, "moneybags", None, color, scale),
-    "TTR Spin Doctor": MAKECOG( departmentLaw, TTR_COG_B_DATA, "telemarketer", "**/spin-doctor", color, scale),
-    "TTR Head Hunter": MAKECOG( departmentBoss, TTR_COG_A_DATA, "headhunter", None, color, scale),
-
-    "TTR The Mingler": MAKECOG( departmentSell, TTR_COG_A_DATA, "twoface", "**/mingler", color, scale),
-    "TTR Loan Shark": MAKECOG( departmentCash, TTR_COG_B_DATA, "loanshark", None, color, scale),
-    "TTR Legal Eagle": MAKECOG( departmentLaw, TTR_COG_A_DATA, "legaleagle", None, color, scale),
-    "TTR Corporate Raider": MAKECOG( departmentBoss, TTR_COG_C_DATA, "tightwad", "**/corporate-raider", color, scale),
-
-    "TTR Mr. Hollywood": MAKECOG( departmentSell, TTR_COG_A_DATA, "yesman", None, color, scale),
-    "TTR Robber Baron": MAKECOG( departmentCash, TTR_COG_A_DATA, "yesman", "**/robber-baron", color, scale),
-    "TTR Big Wig": MAKECOG( departmentLaw, TTR_COG_A_DATA, "bigwig", None, color, scale),
-    "TTR The Big Cheese": MAKECOG( departmentBoss, TTR_COG_A_DATA, "bigcheese", None, color, scale),
+    'sc':[3.6 / cSize, moneyPolyColor], #shortchange
+    'pp':[3.55 / aSize, (1.0, 0.5, 0.6, 1.0)], #pennypincher
+    'tw':[4.5 / cSize, moneyPolyColor], #tightwad
+    'bc':[4.4 / bSize, moneyPolyColor], #beancounter
+    'nc':[5.25 / aSize, moneyPolyColor], #numbercruncher
+    'mb':[5.3 / cSize, moneyPolyColor], #moneybags
+    'ls':[6.5 / bSize, (0.5, 0.85, 0.75, 1.0)], #loanshark
+    'rb':[7.0 / aSize, moneyPolyColor], #robber-baron
+    
+    'bf':[4.0 / cSize, legalPolyColor], #bottom-feeder
+    'b':[4.375 / bSize, (0.95, 0.95, 1.0, 1.0)], #bloodsucker
+    'dt':[4.25 / aSize, legalPolyColor], #doubler-talker
+    'ac':[4.35 / bSize, legalPolyColor], #ambulancechaser
+    'bs':[4.5 / aSize, legalPolyColor], #backstabber
+    'sd':[5.65 / bSize, (0.5, 0.8, 0.75, 1.0)], #spin-doctor
+    'le':[7.125 / aSize, (0.25, 0.25, 0.5, 1.0)], #legaleagle
+    'bw':[7.0 / aSize, legalPolyColor], #bigwig
+    
+    'f': [4.0 / cSize, corpPolyColor],   #flunky
+    'p': [3.35 / bSize, corpPolyColor], #pencilpusher
+    'ym':[4.125 / aSize, corpPolyColor], #yesman
+    'mm':[2.5 / cSize, corpPolyColor], #micromanager
+    'ds':[4.5 / bSize, corpPolyColor], #downsizer
+    'hd':[6.5 / aSize, corpPolyColor], #headhunter
+    'cr':[6.75 / cSize, (0.85, 0.55, 0.55, 1.0)], #corporate-raider
+    'tbc':[7.0 / aSize, (0.75, 0.95, 0.75, 1.0)], #bigcheese
 }
 
+
+
+TTR_COG_DATA = {
+    "TTR Cold Caller": MAKECOG( departmentSell, TTR_COG_C_DATA, "coldcaller", None, DSC['cc'][0], DSC['cc'][1]),
+    "TTR Short Change": MAKECOG( departmentCash, TTR_COG_C_DATA, "coldcaller", None, DSC['sc'][0], DSC['sc'][1]),
+    "TTR Bottom Feeder": MAKECOG( departmentLaw, TTR_COG_C_DATA, "tightwad", "**/bottom-feeder", DSC['bf'][0], DSC['bf'][1]),
+    "TTR Flunky": MAKECOG( departmentBoss, TTR_COG_C_DATA, "flunky", None, DSC['f'][0], DSC['f'][1]),
+
+    "TTR Telemarketer": MAKECOG( departmentSell, TTR_COG_B_DATA, "telemarketer", None, DSC['tm'][0], DSC['tm'][1]),
+    "TTR Penny Pincher": MAKECOG( departmentCash, TTR_COG_A_DATA, "pennypincher", None, DSC['pp'][0], DSC['pp'][1]),
+    "TTR Bloodsucker": MAKECOG( departmentLaw, TTR_COG_B_DATA, "movershaker", "**/blood-sucker", DSC['b'][0], DSC['b'][1]),
+    "TTR Pencil Pusher": MAKECOG( departmentBoss, TTR_COG_B_DATA, "pencilpusher", None, DSC['p'][0], DSC['p'][1]),
+
+    "TTR Name Dropper": MAKECOG( departmentSell, TTR_COG_A_DATA, "numbercruncher", "**/name-dropper", DSC['nd'][0], DSC['nd'][1]),
+    "TTR Tightwad": MAKECOG( departmentCash, TTR_COG_C_DATA, "tightwad", None, DSC['tw'][0], DSC['tw'][1]),
+    "TTR Double Talker": MAKECOG( departmentLaw, TTR_COG_A_DATA, "twoface", "**/double-talker", DSC['dt'][0], DSC['dt'][1]),
+    "TTR Yesman": MAKECOG( departmentBoss, TTR_COG_A_DATA, "yesman", None, DSC['ym'][0], DSC['ym'][1]),
+
+    "TTR Glad Hander": MAKECOG( departmentSell, TTR_COG_C_DATA, "gladhander", None, DSC['gh'][0], DSC['gh'][1]),
+    "TTR Bean Counter": MAKECOG( departmentCash, TTR_COG_B_DATA, "beancounter", None, DSC['bc'][0], DSC['bc'][1]),
+    "TTR Ambulance Chaser": MAKECOG( departmentLaw, TTR_COG_B_DATA, "ambulancechaser", None, DSC['ac'][0], DSC['ac'][1]),
+    "TTR Micromanager": MAKECOG( departmentBoss, TTR_COG_C_DATA, "micromanager", None, DSC['mm'][0], DSC['mm'][1]),
+
+    "TTR Mover & Shaker": MAKECOG( departmentSell, TTR_COG_B_DATA, "movershaker", None, DSC['ms'][0], DSC['ms'][1]),
+    "TTR Number Cruncher": MAKECOG( departmentCash, TTR_COG_A_DATA, "numbercruncher", None, DSC['nc'][0], DSC['nc'][1]),
+    "TTR Back Stabber": MAKECOG( departmentLaw, TTR_COG_A_DATA, "backstabber", None, DSC['bs'][0], DSC['bs'][1]),
+    "TTR Downsizer": MAKECOG( departmentBoss, TTR_COG_B_DATA, "beancounter", None, DSC['ds'][0], DSC['ds'][1]),
+
+    "TTR Two-Face": MAKECOG( departmentSell, TTR_COG_A_DATA, "twoface", None, DSC['tf'][0], DSC['tf'][1]),
+    "TTR Money Bags": MAKECOG( departmentCash, TTR_COG_C_DATA, "moneybags", None, DSC['mb'][0], DSC['mb'][1]),
+    "TTR Spin Doctor": MAKECOG( departmentLaw, TTR_COG_B_DATA, "telemarketer", "**/spin-doctor", DSC['sd'][0], DSC['sd'][1]),
+    "TTR Head Hunter": MAKECOG( departmentBoss, TTR_COG_A_DATA, "headhunter", None, DSC['hd'][0], DSC['hd'][1]),
+
+    "TTR The Mingler": MAKECOG( departmentSell, TTR_COG_A_DATA, "twoface", "**/mingler", DSC['m'][0], DSC['m'][1]),
+    "TTR Loan Shark": MAKECOG( departmentCash, TTR_COG_B_DATA, "loanshark", None, DSC['ls'][0], DSC['ls'][1]),
+    "TTR Legal Eagle": MAKECOG( departmentLaw, TTR_COG_A_DATA, "legaleagle", None, DSC['le'][0], DSC['le'][1]),
+    "TTR Corporate Raider": MAKECOG( departmentBoss, TTR_COG_C_DATA, "tightwad", "**/corporate-raider", DSC['cr'][0], DSC['cr'][1]),
+
+    "TTR Mr. Hollywood": MAKECOG( departmentSell, TTR_COG_A_DATA, "yesman", None, DSC['mh'][0], DSC['mh'][1]),
+    "TTR Robber Baron": MAKECOG( departmentCash, TTR_COG_A_DATA, "yesman", "**/robber-baron", DSC['rb'][0], DSC['rb'][1]),
+    "TTR Big Wig": MAKECOG( departmentLaw, TTR_COG_A_DATA, "bigwig", None, DSC['bw'][0], DSC['bw'][1]),
+    "TTR The Big Cheese": MAKECOG( departmentBoss, TTR_COG_A_DATA, "bigcheese", None, DSC['tbc'][0], DSC['tbc'][1]),
+}
+
+TTR_COG_DATA["TTR Cold Caller"]["headColor"] = DSC['cc'][2]
+TTR_COG_DATA["TTR Flunky"]["unhide"] = ["glasses"]
 
 """
 {

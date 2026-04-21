@@ -1953,13 +1953,19 @@ class CogViewer(ShowBase):
                         
                         if part.getName() != cog_data["cog"] and part.getName() != "suitC-heads" and part.getName() != "suitB-heads" and part.getName() != "suitA-heads":
                             partinner = self.head.find(f"**/{part.getName()}")
-                            if not partinner.isEmpty():
-                                partinner.hide()
+                            if "unhide" in cog_data and part.getName() in cog_data["unhide"]:
+                                partinner.show()
+                            else:
+                                if not partinner.isEmpty():
+                                    partinner.hide()
                     self.head.reparentTo(self.actor.find('**/def_M_head_01'))
             except OSError:
                 self.head = loader.loadModel(globals.SHADOW_MODEL)
 
-        
+        if "headColor" in cog_data:
+            self.head.setColor(cog_data["headColor"])
+            
+                
 
         # Head resize for specific cogs
         if "headSize" in cog_data:
@@ -1982,6 +1988,8 @@ class CogViewer(ShowBase):
         if "bodyColor" in cog_data:
             self.actor.find('**/body').setColor(cog_data["bodyColor"])
             self.head.setColor(cog_data["bodyColor"])
+            
+
 
         # Skelecog Head Texture
         if "headTex" in cog_data:
